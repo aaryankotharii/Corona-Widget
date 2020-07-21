@@ -16,3 +16,13 @@ struct CountryModel : TimelineEntry {
     var deaths : Int
     var recovered : Int
 }
+
+struct DataProvider : TimelineProvider {
+    func timeline(with context: Context, completion: @escaping (Timeline<CountryModel>) -> ()) {
+        //TODO
+    }
+    
+    func snapshot(with context: Context, completion: @escaping (CountryModel) -> ()) {
+        // TODO
+    }
+}
