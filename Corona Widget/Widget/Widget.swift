@@ -9,4 +9,10 @@ import WidgetKit
 import SwiftUI
 import Intents
 
-
+struct CountryModel : TimelineEntry {
+    var date: Date
+    var total : Int
+    var active : Int
+    var deaths : Int
+    var recovered : Int
+}
