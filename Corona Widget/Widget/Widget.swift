@@ -26,3 +26,36 @@ struct DataProvider : TimelineProvider {
         // TODO
     }
 }
+
+
+struct WidgetView : View{
+    var data : DataProvider.Entry
+    var body : some View {
+        Text("YO")
+    }
+}
+
+struct Placeholder : View{
+    var body : some View {
+        Text("YO")
+    }
+}
+
+@main
+struct Config : Widget {
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: "Widget", provider: DataProvider(), placeholder: Placeholder()) { data in
+            WidgetView(data: data)
+        }
+        .supportedFamilies([.systemSmall])
+        .description(Text("Current Time widget"))
+    }
+}
+
+
+struct Widget_Previews: PreviewProvider {
+    static var previews: some View {
+        WidgetView(data: CountryModel(date: Date(), total: 10, active: 20, deaths: 20, recovered: 10))
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+    }
+}
