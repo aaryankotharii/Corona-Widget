@@ -18,6 +18,7 @@
 		5B0F50E024C76BD600F273CD /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F50DC24C76BD400F273CD /* Widget.intentdefinition */; };
 		5B0F50E124C76BD600F273CD /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F50DC24C76BD400F273CD /* Widget.intentdefinition */; };
 		5B0F50E424C76BD600F273CD /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5B0F50D324C76BD400F273CD /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5BBD8BE724C7718500DD1C08 /* Corona.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8BE624C7718500DD1C08 /* Corona.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		5B0F50DC24C76BD400F273CD /* Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Widget.intentdefinition; sourceTree = "<group>"; };
 		5B0F50DD24C76BD600F273CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B0F50DF24C76BD600F273CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BBD8BE624C7718500DD1C08 /* Corona.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corona.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,12 +133,21 @@
 		5B0F50D924C76BD400F273CD /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				5B0F50EB24C770B000F273CD /* Extensions */,
 				5B0F50DA24C76BD400F273CD /* Widget.swift */,
 				5B0F50DC24C76BD400F273CD /* Widget.intentdefinition */,
 				5B0F50DD24C76BD600F273CD /* Assets.xcassets */,
 				5B0F50DF24C76BD600F273CD /* Info.plist */,
 			);
 			path = Widget;
+			sourceTree = "<group>";
+		};
+		5B0F50EB24C770B000F273CD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5BBD8BE624C7718500DD1C08 /* Corona.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B0F50C324C76B7900F273CD /* ContentView.swift in Sources */,
+				5BBD8BE724C7718500DD1C08 /* Corona.swift in Sources */,
 				5B0F50C124C76B7900F273CD /* Corona_WidgetApp.swift in Sources */,
 				5B0F50E124C76BD600F273CD /* Widget.intentdefinition in Sources */,
 			);

@@ -15,6 +15,8 @@ struct CountryModel : TimelineEntry {
     var active : Int
     var deaths : Int
     var recovered : Int
+    var name : String
+    var emoji : String
 }
 
 struct DataProvider : TimelineProvider {
@@ -31,7 +33,15 @@ struct DataProvider : TimelineProvider {
 struct WidgetView : View{
     var data : DataProvider.Entry
     var body : some View {
-        Text("YO")
+        VStack{
+            HStack{
+                Text(data.emoji)
+                Text(data.name)
+            }
+            .padding(.all, 10)
+            .background(Color.pink)
+            Spacer()
+        }
     }
 }
 
@@ -55,7 +65,7 @@ struct Config : Widget {
 
 struct Widget_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetView(data: CountryModel(date: Date(), total: 10, active: 20, deaths: 20, recovered: 10))
+        WidgetView(data: CountryModel(date: Date(), total: 10, active: 20, deaths: 20, recovered: 10,name: "India",emoji: "🇮🇳"))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
