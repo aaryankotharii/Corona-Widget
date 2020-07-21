@@ -32,16 +32,40 @@ struct DataProvider : TimelineProvider {
 
 struct WidgetView : View{
     var data : DataProvider.Entry
+    @Environment(\.widgetFamily) var family
+
     var body : some View {
         VStack{
             HStack{
+                Spacer()
                 Text(data.emoji)
                 Text(data.name)
+                Spacer()
             }
             .padding(.all, 10)
             .background(Color.pink)
+            VStack(spacing:10){
+                Line(end: 90, color: Color.coronapink)
+                Line(end: 50, color: Color.coronagreen)
+                Line(end: 10, color: Color.coronagrey)
+                Line(end: 30, color: Color.coronayellow)
+
+            }
             Spacer()
         }
+    }
+}
+
+
+struct Line : View {
+    var end : Int
+    var color : Color
+    var body: some View {
+        Path { path in
+            path.move(to: CGPoint(x: 0, y: 20))
+            path.addLine(to: CGPoint(x: end, y: 20))
+        }
+        .stroke(color, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
     }
 }
 
