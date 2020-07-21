@@ -44,26 +44,45 @@ struct WidgetView : View{
             }
             .padding(.all, 10)
             .background(Color.pink)
-            VStack(spacing:10){
-                Line(end: 90, color: Color.coronapink)
-                Line(end: 50, color: Color.coronagreen)
-                Line(end: 10, color: Color.coronagrey)
-                Line(end: 30, color: Color.coronayellow)
-
-            }
+            GraphView(country: CountryModel(date: Date(), total: 100, active: 50, deaths: 30, recovered: 20, name: "", emoji: ""))
             Spacer()
         }
     }
 }
 
+struct GraphView : View {
+    var country : CountryModel
+    var body: some View {
+        GeometryReader(content: { geometry in
+            VStack{
+                Line(end: geometry.size.width * 0.75, color: .coronapink)
+                Line(end: geometry.size.width * recoveredpercent(), color: .coronagreen)
+                Line(end: geometry.size.width * deathPercent(), color: .coronagrey)
+                Line(end: geometry.size.width * activepercent(), color: .coronayellow)
+            }
+        })
+    }
+    func activepercent()->CGFloat {
+        return CGFloat(country.active/country.total) * 0.75
+    }
+    
+    func deathPercent()->CGFloat {
+        return CGFloat(country.deaths/country.total) * 0.75
+    }
+    
+    func recoveredpercent()->CGFloat {
+        return CGFloat(country.recovered/country.total) * 0.75
+    }
+}
+
 
 struct Line : View {
-    var end : Int
+    var end : CGFloat
     var color : Color
     var body: some View {
         Path { path in
             path.move(to: CGPoint(x: 0, y: 20))
-            path.addLine(to: CGPoint(x: end, y: 20))
+            path.addLine(to: CGPoint(x: Int(end), y: 20))
         }
         .stroke(color, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
     }
