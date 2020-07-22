@@ -20,13 +20,16 @@ struct CountryModel : TimelineEntry {
 }
 
 struct DataProvider : TimelineProvider {
+    
+    @ObservedObject var corona = SessionStore()
+
     func timeline(with context: Context, completion: @escaping (Timeline<CountryModel>) -> ()) {
         
-        let entryData = CountryModel(date: Date(), total: 100, active: 50, deaths: 20, recovered: 30, name: "India", emoji: "🇮🇳")
-                
-        let timeline = Timeline(entries: [entryData], policy: .never)
+        corona.fetch()
         
-        print("update")
+        let entryData = CountryModel(date: Date(), total: corona.current?.Global.TotalConfirmed ?? 1, active: 100000, deaths: corona.current?.Global.TotalDeaths ?? 1, recovered: corona.current?.Global.TotalRecovered ?? 1, name: "India", emoji: "🇮🇳")
+        
+        let timeline = Timeline(entries: [entryData], policy: .never)
         
         completion(timeline)
     }
