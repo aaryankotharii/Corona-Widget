@@ -16,8 +16,23 @@ private var decoder: JSONDecoder{
 }
 
 class CoronaClient {
+        class func fetchSummary(onSuccess: @escaping (Corona) -> Void){
+            guard let url = url else { return }
     
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                guard let data = data, error == nil else{
+                    fatalError(error!.localizedDescription)
+                }
+                do{
+                    let coronaData = try decoder.decode(Corona.self, from: data)
+                    DispatchQueue.main.async {
+                        onSuccess(coronaData)
+                    }
+                }catch{
+                    print(error.localizedDescription)
+                }
+            }.resume()
+        }
 }
-
 
 
