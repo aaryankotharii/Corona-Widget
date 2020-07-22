@@ -87,7 +87,7 @@ struct smallWidget : View {
             smallWidgetBlock(type: .recovered, count: Int(data.recovered), color: .coronagreen)
             smallWidgetBlock(type: .deaths, count: Int(data.deaths), color: .coronagrey)
             smallWidgetBlock(type: .active, count: Int(data.active), color: .coronayellow)
-            }
+            }.padding(.bottom, 15)
         }
     }
 }
@@ -245,7 +245,7 @@ enum coronaType {
         case .deaths:
             return "Deaths"
         case .recovered:
-            return "Recoveries"
+            return "Recovered"
         }
     }
     

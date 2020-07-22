@@ -26,6 +26,8 @@
 		5BBD8BF024C7F12800DD1C08 /* CoronaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8BEB24C7ED4D00DD1C08 /* CoronaClient.swift */; };
 		5BBD8BF224C7F13500DD1C08 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8BF124C7F13500DD1C08 /* SessionStore.swift */; };
 		5BBD8BF324C7F13500DD1C08 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8BF124C7F13500DD1C08 /* SessionStore.swift */; };
+		5BBD8BF524C82E9400DD1C08 /* Cases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8BF424C82E9400DD1C08 /* Cases.swift */; };
+		5BBD8BF624C82E9400DD1C08 /* Cases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8BF424C82E9400DD1C08 /* Cases.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,7 @@
 		5BBD8BEB24C7ED4D00DD1C08 /* CoronaClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaClient.swift; sourceTree = "<group>"; };
 		5BBD8BED24C7EE8B00DD1C08 /* CoronaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaModel.swift; sourceTree = "<group>"; };
 		5BBD8BF124C7F13500DD1C08 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		5BBD8BF424C82E9400DD1C08 /* Cases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cases.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				5BBD8BE624C7718500DD1C08 /* Color.swift */,
+				5BBD8BF424C82E9400DD1C08 /* Cases.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -268,6 +272,7 @@
 				5BBD8BEE24C7EE8B00DD1C08 /* CoronaModel.swift in Sources */,
 				5BBD8BE724C7718500DD1C08 /* Color.swift in Sources */,
 				5B0F50C124C76B7900F273CD /* Corona_WidgetApp.swift in Sources */,
+				5BBD8BF524C82E9400DD1C08 /* Cases.swift in Sources */,
 				5BBD8BEC24C7ED4D00DD1C08 /* CoronaClient.swift in Sources */,
 				5B0F50E124C76BD600F273CD /* Widget.intentdefinition in Sources */,
 			);
@@ -281,6 +286,7 @@
 				5BBD8BE824C7775600DD1C08 /* Color.swift in Sources */,
 				5BBD8BF324C7F13500DD1C08 /* SessionStore.swift in Sources */,
 				5B0F50DB24C76BD400F273CD /* Widget.swift in Sources */,
+				5BBD8BF624C82E9400DD1C08 /* Cases.swift in Sources */,
 				5BBD8BF024C7F12800DD1C08 /* CoronaClient.swift in Sources */,
 				5BBD8BEF24C7EE8C00DD1C08 /* CoronaModel.swift in Sources */,
 			);
