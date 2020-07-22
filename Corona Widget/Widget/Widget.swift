@@ -21,7 +21,14 @@ struct CountryModel : TimelineEntry {
 
 struct DataProvider : TimelineProvider {
     func timeline(with context: Context, completion: @escaping (Timeline<CountryModel>) -> ()) {
-        //TODO
+        
+        let entryData = CountryModel(date: Date(), total: 100, active: 50, deaths: 20, recovered: 30, name: "India", emoji: "yo")
+                
+        let timeline = Timeline(entries: [entryData], policy: .never)
+        
+        print("update")
+        
+        completion(timeline)
     }
     
     func snapshot(with context: Context, completion: @escaping (CountryModel) -> ()) {
@@ -44,7 +51,7 @@ struct WidgetView : View{
             }
             .padding(.all, 10)
             .background(Color.pink)
-            GraphView(country: CountryModel(date: Date(), total: 100, active: 50, deaths: 30, recovered: 20, name: "", emoji: ""))
+            GraphView(country: data)
             Spacer()
         }
     }
@@ -63,6 +70,7 @@ struct GraphView : View {
         })
     }
     func activepercent()->CGFloat {
+        print(CGFloat(country.active/country.total) * 0.75)
         return CGFloat(country.active/country.total) * 0.75
     }
     
@@ -108,7 +116,7 @@ struct Config : Widget {
 
 struct Widget_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetView(data: CountryModel(date: Date(), total: 10, active: 20, deaths: 20, recovered: 10,name: "India",emoji: "🇮🇳"))
+        WidgetView(data: CountryModel(date: Date(), total: 100, active: 30, deaths: 20, recovered: 50,name: "India",emoji: "🇮🇳"))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
