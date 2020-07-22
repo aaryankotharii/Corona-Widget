@@ -29,7 +29,7 @@ struct DataProvider : TimelineProvider {
         
         let entryData = CountryModel(date: Date(), total: corona.current?.Global.TotalConfirmed ?? 1, active: 100000, deaths: corona.current?.Global.TotalDeaths ?? 1, recovered: corona.current?.Global.TotalRecovered ?? 1, name: "India", emoji: "🇮🇳")
         
-        let refresh = Calendar.current.date(byAdding: .second, value: 5, to: Date())!
+        let refresh = Calendar.current.date(byAdding: .second, value: 10, to: Date())!
         
         
         let timeline = Timeline(entries: [entryData], policy: .after(refresh))
@@ -40,15 +40,37 @@ struct DataProvider : TimelineProvider {
     }
     
     func snapshot(with context: Context, completion: @escaping (CountryModel) -> ()) {
-        // TODO
+        corona.fetch()
+        
+        let entryData = CountryModel(date: Date(), total: corona.current?.Global.TotalConfirmed ?? 1, active: 100000, deaths: corona.current?.Global.TotalDeaths ?? 1, recovered: corona.current?.Global.TotalRecovered ?? 1, name: "India", emoji: "🇮🇳")
+        
+        completion(entryData)
     }
 }
 
 
 struct WidgetView : View{
     var data : DataProvider.Entry
-    @Environment(\.widgetFamily) var family
-    
+    @Environment(\.widgetFamily) private var family
+    var body : some View {
+        Group {
+            switch family {
+            case .systemSmall:
+                smallWidget(data: data)
+            case .systemMedium:
+                mediumWidget(data: data)
+            case .systemLarge:
+                smallWidget(data: data)
+            @unknown default:
+                smallWidget(data: data)
+            }
+        }
+    }
+}
+
+
+struct smallWidget : View {
+    var data : CountryModel
     var body : some View {
         VStack{
             HStack{
@@ -56,7 +78,31 @@ struct WidgetView : View{
                 Text(data.emoji)
                 Text(data.name)
                 Spacer()
-            }
+            }.font(.headline)
+            .foregroundColor(.white)
+            .padding(.all, 10)
+            .background(Color.pink)
+            GraphView(country: data)
+            Spacer()
+        }
+    }
+}
+
+struct smallWidgetBlock : View {
+    var Type :
+}
+
+struct mediumWidget : View {
+    var data : CountryModel
+    var body : some View {
+        VStack{
+            HStack{
+                Spacer()
+                Text(data.emoji)
+                Text(data.name)
+                Spacer()
+            }.font(.headline)
+            .foregroundColor(.white)
             .padding(.all, 10)
             .background(Color.pink)
             GraphView(country: data)
@@ -107,7 +153,6 @@ struct Line : View {
             .onTapGesture {
                 print(end)
             }
-            
             Text("\(Int(value))")
                 .foregroundColor(color)
         }
@@ -126,7 +171,7 @@ struct Config : Widget {
         StaticConfiguration(kind: "Widget", provider: DataProvider(), placeholder: Placeholder()) { data in
             WidgetView(data: data)
         }
-        .supportedFamilies([.systemSmall])
+        .supportedFamilies([.systemSmall,.systemMedium,.systemLarge])
         .description(Text("Current Time widget"))
     }
 }
@@ -137,4 +182,12 @@ struct Widget_Previews: PreviewProvider {
         WidgetView(data: CountryModel(date: Date(), total: 100, active: 30, deaths: 20, recovered: 50,name: "India",emoji: "🇮🇳"))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
+}
+
+
+enum coronaType {
+    case total
+    case active
+    case deaths
+    case recovered
 }
