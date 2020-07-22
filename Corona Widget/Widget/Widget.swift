@@ -22,7 +22,7 @@ struct CountryModel : TimelineEntry {
 struct DataProvider : TimelineProvider {
     func timeline(with context: Context, completion: @escaping (Timeline<CountryModel>) -> ()) {
         
-        let entryData = CountryModel(date: Date(), total: 100, active: 50, deaths: 20, recovered: 30, name: "India", emoji: "yo")
+        let entryData = CountryModel(date: Date(), total: 100, active: 50, deaths: 20, recovered: 30, name: "India", emoji: "🇮🇳")
                 
         let timeline = Timeline(entries: [entryData], policy: .never)
         
@@ -93,6 +93,10 @@ struct Line : View {
             path.addLine(to: CGPoint(x: Int(end), y: 20))
         }
         .stroke(color, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+        .animation(.easeIn)
+        .onTapGesture {
+            print(end)
+        }
     }
 }
 
