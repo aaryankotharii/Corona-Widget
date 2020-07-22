@@ -11,10 +11,10 @@ import Intents
 
 struct CountryModel : TimelineEntry {
     var date: Date
-    var total : Int
-    var active : Int
-    var deaths : Int
-    var recovered : Int
+    var total : Double
+    var active : Double
+    var deaths : Double
+    var recovered : Double
     var name : String
     var emoji : String
 }
@@ -98,7 +98,7 @@ struct Line : View {
 
 struct Placeholder : View{
     var body : some View {
-        Text("YO")
+        Text("YOLO")
     }
 }
 
