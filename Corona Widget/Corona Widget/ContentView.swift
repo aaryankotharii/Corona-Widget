@@ -12,7 +12,9 @@ struct ContentView: View {
     var body: some View {
         Text("\(corona.current?.Global.TotalDeaths ?? 0)").padding()
             .onAppear {
-                corona.fetch()
+                corona.fetch{ idk in
+                    
+                }
             }
     }
 }

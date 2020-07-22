@@ -21,30 +21,37 @@ struct CountryModel : TimelineEntry {
 
 struct DataProvider : TimelineProvider {
     
-    @ObservedObject var corona = SessionStore()
+    @ObservedObject var coronaStore = SessionStore()
     
     func timeline(with context: Context, completion: @escaping (Timeline<CountryModel>) -> ()) {
         
-        corona.fetch()
-        
-        let entryData = CountryModel(date: Date(), total: corona.current?.Global.TotalConfirmed ?? 1, active: 100000, deaths: corona.current?.Global.TotalDeaths ?? 1, recovered: corona.current?.Global.TotalRecovered ?? 1, name: "India", emoji: "🇮🇳")
-        
-        let refresh = Calendar.current.date(byAdding: .second, value: 10, to: Date())!
-        
-        
-        let timeline = Timeline(entries: [entryData], policy: .after(refresh))
-        
-        print("update")
-        
-        completion(timeline)
+        var entries: [CountryModel] = []
+        let refresh = Calendar.current.date(byAdding: .second, value: 20, to: Date()) ?? Date()
+        coronaStore.fetch{ corona in
+            let total = corona.Global.TotalConfirmed
+            let deaths = corona.Global.TotalDeaths
+            let recovered = corona.Global.TotalRecovered
+            let active = total - deaths - recovered
+            let entryData = CountryModel(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: "India", emoji: "🇮🇳")
+            entries.append(entryData)
+            let timeline = Timeline(entries: entries, policy: .after(refresh))
+            
+            print("update")
+            
+            completion(timeline)
+        }
     }
     
     func snapshot(with context: Context, completion: @escaping (CountryModel) -> ()) {
-        corona.fetch()
-        
-        let entryData = CountryModel(date: Date(), total: corona.current?.Global.TotalConfirmed ?? 1, active: 100000, deaths: corona.current?.Global.TotalDeaths ?? 1, recovered: corona.current?.Global.TotalRecovered ?? 1, name: "India", emoji: "🇮🇳")
-        
-        completion(entryData)
+        coronaStore.fetch{ corona in
+            let total = corona.Global.TotalConfirmed
+            let deaths = corona.Global.TotalDeaths
+            let recovered = corona.Global.TotalRecovered
+            let active = total - deaths - recovered
+            let entryData = CountryModel(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: "India", emoji: "🇮🇳")
+            
+            completion(entryData)
+        }
     }
 }
 
@@ -83,10 +90,10 @@ struct smallWidget : View {
             .padding(.all, 10)
             .background(Color.pink)
             VStack(alignment:.leading){
-            smallWidgetBlock(type: .total, count: Int(data.total), color: .coronapink)
-            smallWidgetBlock(type: .recovered, count: Int(data.recovered), color: .coronagreen)
-            smallWidgetBlock(type: .deaths, count: Int(data.deaths), color: .coronagrey)
-            smallWidgetBlock(type: .active, count: Int(data.active), color: .coronayellow)
+                smallWidgetBlock(type: .total, count: data.total, color: .coronapink)
+                smallWidgetBlock(type: .recovered, count: data.recovered, color: .coronagreen)
+                smallWidgetBlock(type: .deaths, count: data.deaths, color: .coronagrey)
+                smallWidgetBlock(type: .active, count: data.active, color: .coronayellow)
             }.padding(.bottom, 15)
         }
     }
@@ -94,7 +101,7 @@ struct smallWidget : View {
 
 struct smallWidgetBlock : View {
     var type : coronaType
-    var count : Int
+    var count : Double
     var color : Color
     var body: some View {
         HStack {
@@ -104,7 +111,7 @@ struct smallWidgetBlock : View {
             
             Text(type.title + " " + type.subtitle)
                 .font(.system(size: 15))
-            Text("\(count)")
+            Text(count.cases)
                 .foregroundColor(color)
                 .bold()
         }

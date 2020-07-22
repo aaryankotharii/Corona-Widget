@@ -11,14 +11,17 @@ import Combine
 final class SessionStore: ObservableObject {
     @Published  var current : Corona?
     init(){
-        self.fetch()
+        self.fetch{ val in
+            print(val)
+        }
     }
 }
 
 extension SessionStore{
-    func fetch(){
+    func fetch(completion : @escaping(Corona)->()){
         CoronaClient.fetchSummary {
             self.current = $0
+            completion($0)
         }
     }
 }
