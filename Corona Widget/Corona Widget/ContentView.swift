@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var corona = SessionStore()
     var body: some View {
-        Text("Hello, world!").padding()
+        Text("\(corona.current?.Global.TotalDeaths ?? 0)").padding()
+            .onAppear {
+                corona.fetch()
+            }
     }
 }
 

@@ -11,7 +11,7 @@ import Foundation
 
 struct Corona : Codable {
     let Global : Global
-    let Countries : Countries
+    let Countries : [Countries]
 }
 
 struct Global : Codable {
