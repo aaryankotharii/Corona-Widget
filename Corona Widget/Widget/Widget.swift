@@ -58,7 +58,7 @@ struct WidgetView : View{
             case .systemSmall:
                 smallWidget(data: data)
             case .systemMedium:
-                mediumWidget(data: data)
+                smallWidget(data: data)
             case .systemLarge:
                 smallWidget(data: data)
             @unknown default:
@@ -82,14 +82,33 @@ struct smallWidget : View {
             .foregroundColor(.white)
             .padding(.all, 10)
             .background(Color.pink)
-            GraphView(country: data)
-            Spacer()
+            VStack(alignment:.leading){
+            smallWidgetBlock(type: .total, count: Int(data.total), color: .coronapink)
+            smallWidgetBlock(type: .recovered, count: Int(data.recovered), color: .coronagreen)
+            smallWidgetBlock(type: .deaths, count: Int(data.deaths), color: .coronagrey)
+            smallWidgetBlock(type: .active, count: Int(data.active), color: .coronayellow)
+            }
         }
     }
 }
 
 struct smallWidgetBlock : View {
-    var Type :
+    var type : coronaType
+    var count : Int
+    var color : Color
+    var body: some View {
+        HStack {
+            Image(type.image)
+                .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
+                .aspectRatio(contentMode: .fit)
+            
+            Text(type.title + " " + type.subtitle)
+                .font(.system(size: 15))
+            Text("\(count)")
+                .foregroundColor(color)
+                .bold()
+        }
+    }
 }
 
 struct mediumWidget : View {
@@ -190,4 +209,45 @@ enum coronaType {
     case active
     case deaths
     case recovered
+    
+    var image : String {
+        switch self {
+        case .total:
+            return "virus"
+        case .active:
+            return "bolt"
+        case .deaths:
+            return "coffin"
+        case .recovered:
+            return "cross"
+        }
+    }
+    
+    var title : String {
+        switch self {
+        case .total:
+            return "Total"
+        case .active:
+            return "Active"
+        case .deaths:
+            return "Total"
+        case .recovered:
+            return "Total"
+        }
+    }
+    
+    var subtitle : String {
+        switch self {
+        case .total:
+            return "Count"
+        case .active:
+            return "Cases"
+        case .deaths:
+            return "Deaths"
+        case .recovered:
+            return "Recoveries"
+        }
+    }
+    
+    
 }
