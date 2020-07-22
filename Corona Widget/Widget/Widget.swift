@@ -22,14 +22,19 @@ struct CountryModel : TimelineEntry {
 struct DataProvider : TimelineProvider {
     
     @ObservedObject var corona = SessionStore()
-
+    
     func timeline(with context: Context, completion: @escaping (Timeline<CountryModel>) -> ()) {
         
         corona.fetch()
         
         let entryData = CountryModel(date: Date(), total: corona.current?.Global.TotalConfirmed ?? 1, active: 100000, deaths: corona.current?.Global.TotalDeaths ?? 1, recovered: corona.current?.Global.TotalRecovered ?? 1, name: "India", emoji: "🇮🇳")
         
-        let timeline = Timeline(entries: [entryData], policy: .never)
+        let refresh = Calendar.current.date(byAdding: .second, value: 5, to: Date())!
+        
+        
+        let timeline = Timeline(entries: [entryData], policy: .after(refresh))
+        
+        print("update")
         
         completion(timeline)
     }
@@ -43,7 +48,7 @@ struct DataProvider : TimelineProvider {
 struct WidgetView : View{
     var data : DataProvider.Entry
     @Environment(\.widgetFamily) var family
-
+    
     var body : some View {
         VStack{
             HStack{
@@ -65,10 +70,10 @@ struct GraphView : View {
     var body: some View {
         GeometryReader(content: { geometry in
             VStack{
-                Line(end: geometry.size.width * 0.75, color: .coronapink)
-                Line(end: geometry.size.width * recoveredpercent(), color: .coronagreen)
-                Line(end: geometry.size.width * deathPercent(), color: .coronagrey)
-                Line(end: geometry.size.width * activepercent(), color: .coronayellow)
+                Line(end: geometry.size.width * 0.75, value: country.total, color: .coronapink)
+                Line(end: geometry.size.width * recoveredpercent(), value: country.active, color: .coronagreen)
+                Line(end: geometry.size.width * deathPercent(), value: country.deaths, color: .coronagrey)
+                Line(end: geometry.size.width * activepercent(), value: country.active, color: .coronayellow)
             }
         })
     }
@@ -89,16 +94,22 @@ struct GraphView : View {
 
 struct Line : View {
     var end : CGFloat
+    var value : Double
     var color : Color
     var body: some View {
-        Path { path in
-            path.move(to: CGPoint(x: 0, y: 20))
-            path.addLine(to: CGPoint(x: Int(end), y: 20))
-        }
-        .stroke(color, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
-        .animation(.easeIn)
-        .onTapGesture {
-            print(end)
+        HStack{
+            Path { path in
+                path.move(to: CGPoint(x: 0, y: 20))
+                path.addLine(to: CGPoint(x: Int(end), y: 20))
+            }
+            .stroke(color, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+            .animation(.easeIn)
+            .onTapGesture {
+                print(end)
+            }
+            
+            Text("\(Int(value))")
+                .foregroundColor(color)
         }
     }
 }
