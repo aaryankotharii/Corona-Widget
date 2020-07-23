@@ -111,7 +111,7 @@ struct smallWidgetBlock : View {
                 .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
                 .aspectRatio(contentMode: .fit)
             
-            Text(type.title + " " + type.subtitle)
+            Text(type.title)
                 .font(.system(size: 15))
             Text(count.cases)
                 .foregroundColor(color)
@@ -238,19 +238,6 @@ enum coronaType {
             return "Total"
         case .active:
             return "Active"
-        case .deaths:
-            return "Total"
-        case .recovered:
-            return "Total"
-        }
-    }
-    
-    var subtitle : String {
-        switch self {
-        case .total:
-            return "Count"
-        case .active:
-            return "Cases"
         case .deaths:
             return "Deaths"
         case .recovered:
