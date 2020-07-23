@@ -26,6 +26,7 @@ struct DataProvider : TimelineProvider {
     func timeline(with context: Context, completion: @escaping (Timeline<CountryModel>) -> ()) {
         
         var entries: [CountryModel] = []
+        
         let refresh = Calendar.current.date(byAdding: .second, value: 20, to: Date()) ?? Date()
         coronaStore.fetch{ corona in
             let total = corona.Global.TotalConfirmed
@@ -94,6 +95,7 @@ struct smallWidget : View {
                 smallWidgetBlock(type: .recovered, count: data.recovered, color: .coronagreen)
                 smallWidgetBlock(type: .deaths, count: data.deaths, color: .coronagrey)
                 smallWidgetBlock(type: .active, count: data.active, color: .coronayellow)
+
             }.padding(.bottom, 15)
         }
     }
