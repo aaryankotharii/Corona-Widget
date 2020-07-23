@@ -88,6 +88,7 @@ struct smallWidget : View {
                 Spacer()
             }.font(.headline)
             .foregroundColor(.white)
+            .padding(.top, 10)
             .padding(.all, 10)
             .background(Color.pink)
             VStack(alignment:.leading){
@@ -97,6 +98,7 @@ struct smallWidget : View {
                 smallWidgetBlock(type: .active, count: data.active, color: .coronayellow)
 
             }.padding(.bottom, 15)
+            Spacer()
         }
     }
 }
@@ -112,10 +114,16 @@ struct smallWidgetBlock : View {
                 .aspectRatio(contentMode: .fit)
             
             Text(type.title)
+                .minimumScaleFactor(0.5)
                 .font(.system(size: 15))
+                .lineLimit(1)
+                .layoutPriority(1)
             Text(count.cases)
-                .foregroundColor(color)
                 .bold()
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
+                .layoutPriority(1)
+                .foregroundColor(color)
         }
     }
 }
