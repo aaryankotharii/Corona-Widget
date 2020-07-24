@@ -137,20 +137,23 @@ struct mediumWidget : View {
             Spacer()
             VStack(alignment:.leading){
                 HStack{
-                    Spacer()
                     Text(data.emoji)
                     Text(data.name)
                     Spacer()
-                }.font(.title)
+                }.font(.system(size: 35))
                 .foregroundColor(.black)
-                .padding(.all, 10)
-                smallWidgetBlock(type: .total, count: data.total, color: .coronapink)
-                smallWidgetBlock(type: .recovered, count: data.recovered, color: .coronagreen)
-                smallWidgetBlock(type: .deaths, count: data.deaths, color: .coronagrey)
-                smallWidgetBlock(type: .active, count: data.active, color: .coronayellow)
-
+                .padding(.top,20)
+                VStack(alignment:.leading) {
+                    Text("Total: "+data.total.cases)
+                        .foregroundColor(.coronapink)
+                    Text("Recovered: "+data.recovered.cases)
+                        .foregroundColor(.coronagreen)
+                    Text("Deaths: "+data.deaths.cases)
+                        .foregroundColor(.coronagrey)
+                    Text("Active: "+data.active.cases)
+                        .foregroundColor(.coronayellow)
+                }
             }.padding(.bottom, 15)
-            Spacer()
         }
     }
 }

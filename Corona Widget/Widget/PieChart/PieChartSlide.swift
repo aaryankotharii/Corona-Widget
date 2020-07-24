@@ -28,8 +28,10 @@ public struct PieChartSlide: View {
     }
     
     public var body: some View {
+        ZStack{
         path.fill(slideData.data.color)
             .overlay(path.stroke(Color.white, lineWidth: 1))
+        }
     }
 }
 
