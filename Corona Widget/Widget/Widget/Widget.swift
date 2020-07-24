@@ -51,13 +51,7 @@ struct DataProvider : TimelineProvider {
             completion(timeline)
         }
     }
-    
-    func getCountryDetails(_ corona : Corona)->Countries{
-        let country = CurrentCountry.county.rawValue
-        let countries = corona.Countries
-        let mycountry = countries.filter { $0.CountryCode == country}
-        return mycountry.first!
-    }
+
     
     func snapshot(with context: Context, completion: @escaping (Corona) -> ()) {
         coronaStore.fetch{ corona in
@@ -75,21 +69,27 @@ struct WidgetView : View{
         Group {
             switch family {
             case .systemSmall:
-                smallWidget(data: CountryData(data))
+                smallWidget(data: Country)
             case .systemMedium:
-                mediumWidget(data: CountryData(data))
+                mediumWidget(data: Country)
             case .systemLarge:
-                largeWidget(data: data.Global, countries: data.Countries)
+                largeWidget(data: data)
             @unknown default:
-                smallWidget(data: CountryData(data))
+                smallWidget(data: Country)
             }
         }
+    }
+    
+    var Country : Countries{
+        let country = CurrentCountry.county.rawValue
+        let countries = data.Countries
+        let mycountry = countries.filter { $0.CountryCode == country}
+        return mycountry.first!
     }
 }
 
 struct largeWidget : View {
-    var data : Global
-    var countries : Countries
+    var data : Corona
     var body : some View {
         VStack{
             HStack{
@@ -99,9 +99,9 @@ struct largeWidget : View {
                     .padding(.all,20)
             }
             VStack{
-                countStack(total: data.TotalConfirmed, new: data.NewConfirmed, color: .coronapink, name: "confirmed")
-                countStack(total: data.TotalRecovered, new: data.NewRecovered, color: .coronagreen, name: "recovered")
-                countStack(total: data.TotalDeaths, new: data.NewDeaths, color: .coronagrey, name: "deaths")
+                countStack(total: data.Global.TotalConfirmed, new: data.Global.NewConfirmed, color: .coronapink, name: "confirmed")
+                countStack(total: data.Global.TotalRecovered, new: data.Global.NewRecovered, color: .coronagreen, name: "recovered")
+                countStack(total: data.Global.TotalDeaths, new: data.Global.NewDeaths, color: .coronagrey, name: "deaths")
                 countStack(total: totalActive(), new: 0.0, color: .coronayellow, name: "active",isActive:true)
             }
             Spacer()
@@ -109,7 +109,7 @@ struct largeWidget : View {
     }
     
     func totalActive()-> Double{
-        return data.TotalConfirmed - data.TotalDeaths - data.TotalRecovered
+        return data.Global.TotalConfirmed - data.Global.TotalDeaths - data.Global.TotalRecovered
     }
     
     func topTen()->[String]{

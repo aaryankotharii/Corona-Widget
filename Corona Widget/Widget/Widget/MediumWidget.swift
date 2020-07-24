@@ -9,7 +9,6 @@ import SwiftUI
 
 //MARK: systemMedium Widget
 
-ç
 struct mediumWidget : View {
     var data : Countries
     var body : some View {
