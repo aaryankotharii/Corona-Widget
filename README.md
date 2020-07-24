@@ -15,7 +15,7 @@ WidgetKit gives users ready access to content in apps by putting widgets on the 
  <img src ="Assets/Widgets.png"  />      
  </p>
  
- Widgets can be made in three sizes, namely : small , medium and large. Users can their preferred size of widget on their choice of location in the homescreen. 
+ Widgets can be made in three sizes, namely : small , medium and large. Users can use their preferred size of widget on their choice of location in the homescreen. 
  
  # Preview
  
