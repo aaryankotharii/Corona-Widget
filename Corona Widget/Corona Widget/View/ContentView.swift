@@ -11,9 +11,13 @@ struct ContentView: View {
     @ObservedObject var corona = SessionStore()
     var body: some View {
         VStack{
+            Spacer()
             Text("Hey There! 👋")
                 .font(.system(size: 100, weight: .regular, design: .rounded))
+            Spacer()
+            VStack{
             Text("\(corona.current?.Global.TotalConfirmed ?? 0)").padding()
+            }
         }.edgesIgnoringSafeArea(.all)
         .background(LinearGradient(gradient: Gradient(colors: [.white, Color(#colorLiteral(red: 0.631372549, green: 0.6, blue: 1, alpha: 1))]), startPoint: .top, endPoint: .bottom))
         
