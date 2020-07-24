@@ -34,3 +34,5 @@ enum coronaType : String {
         }
     }
 }
+
+///END

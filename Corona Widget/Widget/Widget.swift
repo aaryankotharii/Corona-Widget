@@ -127,7 +127,7 @@ struct smallWidgetBlock : View {
                 .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
                 .aspectRatio(contentMode: .fit)
             
-            Text(type.title)
+            Text(type.rawValue)
                 .minimumScaleFactor(0.5)
                 .font(.system(size: 15))
                 .lineLimit(1)
@@ -190,53 +190,7 @@ struct largeWidget : View {
     }
 }
 
-struct GraphView : View {
-    var country : CountryModel
-    var body: some View {
-        GeometryReader(content: { geometry in
-            VStack{
-                BarLine(end: geometry.size.width * 0.75, value: country.total, color: .coronapink)
-                BarLine(end: geometry.size.width * recoveredpercent(), value: country.active, color: .coronagreen)
-                BarLine(end: geometry.size.width * deathPercent(), value: country.deaths, color: .coronagrey)
-                BarLine(end: geometry.size.width * activepercent(), value: country.active, color: .coronayellow)
-            }
-        })
-    }
-    func activepercent()->CGFloat {
-        print(CGFloat(country.active/country.total) * 0.75)
-        return CGFloat(country.active/country.total) * 0.75
-    }
-    
-    func deathPercent()->CGFloat {
-        return CGFloat(country.deaths/country.total) * 0.75
-    }
-    
-    func recoveredpercent()->CGFloat {
-        return CGFloat(country.recovered/country.total) * 0.75
-    }
-}
 
-
-struct BarLine : View {
-    var end : CGFloat
-    var value : Double
-    var color : Color
-    var body: some View {
-        HStack{
-            Path { path in
-                path.move(to: CGPoint(x: 0, y: 20))
-                path.addLine(to: CGPoint(x: Int(end), y: 20))
-            }
-            .stroke(color, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
-            .animation(.easeIn)
-            .onTapGesture {
-                print(end)
-            }
-            Text("\(Int(value))")
-                .foregroundColor(color)
-        }
-    }
-}
 
 struct Placeholder : View{
     var body : some View {
