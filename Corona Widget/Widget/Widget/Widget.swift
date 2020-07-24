@@ -22,9 +22,6 @@ struct DataProvider : TimelineProvider {
         coronaStore.fetch{ corona in
             entries.append(CoronaData(corona))
             let timeline = Timeline(entries: entries, policy: .after(refresh))
-            
-            print("update")
-            
             completion(timeline)
         }
     }
@@ -80,24 +77,12 @@ struct largeWidget : View {
                 countStack(total: data.Global.TotalDeaths,color: .coronagrey, name: "deaths")
                 countStack(total: totalActive(),color: .coronayellow, name: "active")
             }
-            HStack{
-                VStack{
-                    Text("Past")
-                    Text("24")
-                    Text("Hours")
 
-                }
             VStack(alignment:.leading){
                 countStack(total: data.Global.NewConfirmed,color: .coronapink, name: "confirmed",isActive: true,type: .total)
                 countStack(total: data.Global.NewRecovered, color: .coronagreen, name: "recovered",isActive: true,type: .recovered)
                 countStack(total: data.Global.NewDeaths,color: .coronagrey, name: "deaths",isActive: true,type: .deaths)
             }
-            }.padding(20)
-            .cornerRadius(20)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color.blue, lineWidth: 4)
-            )
             
             Spacer()
             VStack(alignment:.leading){
@@ -112,7 +97,7 @@ struct largeWidget : View {
                 }
             }.padding(.bottom,30)
         }
-        }.background(LinearGradient(gradient: Gradient(colors: [.coronapink,.white]), startPoint: .bottom, endPoint: .top))
+        }
     }
     
     func totalActive()-> Double{
@@ -143,7 +128,7 @@ struct countStack : View {
                         .aspectRatio(contentMode: .fit)
                 }
             }
-            Text((isActive ? " " : "Total ") + "\(name) : \(Int(total))").bold().foregroundColor(.white)
+            Text((isActive ? "New " : "Total ") + "\(name) : \(Int(total))").bold()
         }
     }
 }
@@ -158,12 +143,3 @@ struct Config : Widget {
         .description(Text("Current Time widget"))
     }
 }
-
-
-//struct Widget_Previews: PreviewProvider {
-//    static var previews: some View {
-//        WidgetView(data: CountryModel(date: Date(), total: 100, active: 30, deaths: 20, recovered: 50,name: "India", code: "IN",emoji: "🇮🇳", global: Global()))
-//            .previewContext(WidgetPreviewContext(family: .systemLarge))
-//    }
-//}
-
