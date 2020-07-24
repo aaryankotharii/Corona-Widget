@@ -168,7 +168,6 @@
 				5BC6B2B624CB67770073A3FE /* Utils */,
 				5BC6B2B524CB67710073A3FE /* View */,
 				5BC6B2B424CB67650073A3FE /* Model */,
-				5B0F50C024C76B7900F273CD /* Corona_WidgetApp.swift */,
 				5B0F50C424C76B7E00F273CD /* Assets.xcassets */,
 				5B0F50C924C76B7E00F273CD /* Info.plist */,
 				5B0F50C624C76B7E00F273CD /* Preview Content */,
@@ -250,6 +249,7 @@
 		5BC6B2B524CB67710073A3FE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5B0F50C024C76B7900F273CD /* Corona_WidgetApp.swift */,
 				5B0F50C224C76B7900F273CD /* ContentView.swift */,
 			);
 			path = View;
