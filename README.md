@@ -28,8 +28,10 @@ The type of content that each widget shows varies based on users choice and widg
 - Clone / download this repository.
 - change the bundle identifier in project settings.
 - run the app.
+
 ## 
 ## ⚠️ Xcode 12.0 or above is required to run this project.
+
 
 # How to Use?
 - Go to [CurrentCountry.swift](https://github.com/aaryankotharii/Corona-Widget/blob/master/Corona%20Widget/Widget/CurrentCountry.swift)
