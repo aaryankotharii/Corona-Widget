@@ -81,6 +81,11 @@ struct largeWidget : View {
                 countStack(total: totalActive(), new: 0.0, color: .coronayellow, name: "active",isActive:true)
             }
             Spacer()
+            ForEach(topTen(), id:\.self) { emoji in
+                HStack{
+                Text(emoji)
+                }
+            }
         }
     }
     
@@ -89,8 +94,11 @@ struct largeWidget : View {
     }
     
     func topTen()->[String]{
-        let sorted = data.Countries.sorted { $0.TotalConfirmed >  $1.TotalConfirmed}
-     return []
+    let sorted = data.Countries.sorted { $0.TotalConfirmed >  $1.TotalConfirmed}
+        let final = Array(sorted.prefix(10)).map { $0.CountryCode }
+        let emojis = final.map { convertToEmoji(str: $0)}
+        print(emojis)
+     return emojis
     }
 }
 
@@ -126,5 +134,4 @@ struct Config : Widget {
 //            .previewContext(WidgetPreviewContext(family: .systemLarge))
 //    }
 //}
-
 
