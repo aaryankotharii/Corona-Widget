@@ -66,7 +66,7 @@ struct WidgetView : View{
             case .systemSmall:
                 smallWidget(data: data)
             case .systemMedium:
-                smallWidget(data: data)
+                mediumWidget(data: data)
             case .systemLarge:
                 smallWidget(data: data)
             @unknown default:
@@ -216,7 +216,7 @@ struct Config : Widget {
 struct Widget_Previews: PreviewProvider {
     static var previews: some View {
         WidgetView(data: CountryModel(date: Date(), total: 100, active: 30, deaths: 20, recovered: 50,name: "India",emoji: "🇮🇳"))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
 
