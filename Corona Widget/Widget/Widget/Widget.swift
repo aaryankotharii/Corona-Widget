@@ -78,14 +78,27 @@ struct largeWidget : View {
                 countStack(total: data.Global.TotalConfirmed,color: .coronapink, name: "confirmed")
                 countStack(total: data.Global.TotalRecovered,  color: .coronagreen, name: "recovered")
                 countStack(total: data.Global.TotalDeaths,color: .coronagrey, name: "deaths")
-                countStack(total: totalActive(),color: .coronayellow, name: "active",isActive:true)
+                countStack(total: totalActive(),color: .coronayellow, name: "active")
             }
+            HStack{
+                VStack{
+                    Text("Past")
+                    Text("24")
+                    Text("Hours")
+
+                }
             VStack(alignment:.leading){
-                Text("Past 24 hrs:")
                 countStack(total: data.Global.NewConfirmed,color: .coronapink, name: "confirmed",isActive: true,type: .total)
                 countStack(total: data.Global.NewRecovered, color: .coronagreen, name: "recovered",isActive: true,type: .recovered)
                 countStack(total: data.Global.NewDeaths,color: .coronagrey, name: "deaths",isActive: true,type: .deaths)
             }
+            }.padding(20)
+            .cornerRadius(20)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color.blue, lineWidth: 4)
+            )
+            
             Spacer()
             VStack(alignment:.leading){
             Text("TOP  10  MOST  AFFECTED  COUNTRIES  :-")
@@ -99,7 +112,7 @@ struct largeWidget : View {
                 }
             }.padding(.bottom,30)
         }
-    }
+        }.background(LinearGradient(gradient: Gradient(colors: [.coronagreen,.blue,.white]), startPoint: .bottomLeading, endPoint: .topTrailing))
     }
     
     func totalActive()-> Double{
@@ -130,7 +143,7 @@ struct countStack : View {
                         .aspectRatio(contentMode: .fit)
                 }
             }
-            Text((isActive ? " " : "Total ") + "\(name) : \(Int(total))")
+            Text((isActive ? " " : "Total ") + "\(name) : \(Int(total))").bold().foregroundColor(.white)
         }
     }
 }
