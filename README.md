@@ -29,7 +29,7 @@ The type of content that each widget shows varies based on users choice and widg
 - change the bundle identifier in project settings.
 - run the app.
 
-## 
+ 
 ## ⚠️ Xcode 12.0 or above is required to run this project.
 
 
