@@ -36,7 +36,8 @@ struct DataProvider : TimelineProvider {
             let deaths = country.TotalDeaths
             let recovered = country.TotalRecovered
             let active = total - deaths - recovered
-            let entryData = CountryModel(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: country.Country, code: country.CountryCode.lowercased(), emoji: "🇮🇳")
+            let emoji = convertToEmoji(str: country.CountryCode)
+            let entryData = CountryModel(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: country.Country, code: country.CountryCode.lowercased(), emoji: emoji)
             entries.append(entryData)
             let timeline = Timeline(entries: entries, policy: .after(refresh))
             
@@ -60,7 +61,9 @@ struct DataProvider : TimelineProvider {
             let deaths = country.TotalDeaths
             let recovered = country.TotalRecovered
             let active = total - deaths - recovered
-            let entryData = CountryModel(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: country.Country, code: country.CountryCode.lowercased(), emoji: "🇮🇳")
+            let emoji = convertToEmoji(str: country.CountryCode)
+
+            let entryData = CountryModel(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: country.Country, code: country.CountryCode.lowercased(), emoji: emoji)
             
             completion(entryData)
         }
@@ -79,7 +82,7 @@ struct WidgetView : View{
             case .systemMedium:
                 mediumWidget(data: data)
             case .systemLarge:
-                largeWidget(data: data)
+                mediumWidget(data: data)
             @unknown default:
                 smallWidget(data: data)
             }
@@ -258,40 +261,4 @@ struct Widget_Previews: PreviewProvider {
         WidgetView(data: CountryModel(date: Date(), total: 100, active: 30, deaths: 20, recovered: 50,name: "India", code: "IN",emoji: "🇮🇳"))
             .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
-}
-
-
-enum coronaType {
-    case total
-    case active
-    case deaths
-    case recovered
-    
-    var image : String {
-        switch self {
-        case .total:
-            return "virus"
-        case .active:
-            return "bolt"
-        case .deaths:
-            return "coffin"
-        case .recovered:
-            return "cross"
-        }
-    }
-    
-    var title : String {
-        switch self {
-        case .total:
-            return "Total"
-        case .active:
-            return "Active"
-        case .deaths:
-            return "Deaths"
-        case .recovered:
-            return "Recovered"
-        }
-    }
-    
-    
 }

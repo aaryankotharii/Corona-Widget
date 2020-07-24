@@ -46,6 +46,8 @@
 		5BF143C724CAAB8700BF5729 /* CurrentCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143C524CAAB8700BF5729 /* CurrentCountry.swift */; };
 		5BF143C924CAAE8200BF5729 /* emojiConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143C824CAAE8200BF5729 /* emojiConverter.swift */; };
 		5BF143CA24CAAE8200BF5729 /* emojiConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143C824CAAE8200BF5729 /* emojiConverter.swift */; };
+		5BF143CF24CAB18300BF5729 /* CoronaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143CE24CAB18300BF5729 /* CoronaType.swift */; };
+		5BF143D024CAB18300BF5729 /* CoronaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143CE24CAB18300BF5729 /* CoronaType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,7 @@
 		5BF143C224CAAA6A00BF5729 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
 		5BF143C524CAAB8700BF5729 /* CurrentCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCountry.swift; sourceTree = "<group>"; };
 		5BF143C824CAAE8200BF5729 /* emojiConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emojiConverter.swift; sourceTree = "<group>"; };
+		5BF143CE24CAB18300BF5729 /* CoronaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +207,7 @@
 		5BB601E924CA9B8B00607A17 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5BF143CE24CAB18300BF5729 /* CoronaType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -336,6 +340,7 @@
 				5BBD8BEC24C7ED4D00DD1C08 /* CoronaClient.swift in Sources */,
 				5BF143C324CAAA6A00BF5729 /* Countries.swift in Sources */,
 				5B0F50E124C76BD600F273CD /* Widget.intentdefinition in Sources */,
+				5BF143CF24CAB18300BF5729 /* CoronaType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +360,7 @@
 				5BB601F224CA9C6D00607A17 /* PieChartData.swift in Sources */,
 				5BBD8BF624C82E9400DD1C08 /* Cases.swift in Sources */,
 				5BF143CA24CAAE8200BF5729 /* emojiConverter.swift in Sources */,
+				5BF143D024CAB18300BF5729 /* CoronaType.swift in Sources */,
 				5BBD8BF024C7F12800DD1C08 /* CoronaClient.swift in Sources */,
 				5BBD8BEF24C7EE8C00DD1C08 /* CoronaModel.swift in Sources */,
 				5BF143C424CAAA6A00BF5729 /* Countries.swift in Sources */,
