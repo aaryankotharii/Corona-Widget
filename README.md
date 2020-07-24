@@ -2,7 +2,7 @@
  <img src ="Assets/banner.png"  />      
  </p>
 
-#### A Covid-19 Tracking Widget made using SwiftUI
+#### A Covid-19 Tracking Widget for iOS 14
 
 
 # WidgetKit
