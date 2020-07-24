@@ -131,18 +131,25 @@ struct smallWidgetBlock : View {
 struct mediumWidget : View {
     var data : CountryModel
     var body : some View {
-        VStack{
-            HStack{
-                Spacer()
-                Text(data.emoji)
-                Text(data.name)
-                Spacer()
-            }.font(.headline)
-            .foregroundColor(.white)
-            .padding(.all, 10)
-            .background(Color.pink)
-            PieChart(pieChartData: PieChartData(data: [1, 2, 3],colors:[.coronapink,.coronagrey,.coronagreen]))
-                .padding(.leading,50)
+        HStack{
+            PieChart(pieChartData: PieChartData(data: [data.active, data.deaths, data.recovered],colors:[.coronagreen,.coronagrey,.coronayellow]))
+                .padding(.all,25)
+            Spacer()
+            VStack(alignment:.leading){
+                HStack{
+                    Spacer()
+                    Text(data.emoji)
+                    Text(data.name)
+                    Spacer()
+                }.font(.title)
+                .foregroundColor(.black)
+                .padding(.all, 10)
+                smallWidgetBlock(type: .total, count: data.total, color: .coronapink)
+                smallWidgetBlock(type: .recovered, count: data.recovered, color: .coronagreen)
+                smallWidgetBlock(type: .deaths, count: data.deaths, color: .coronagrey)
+                smallWidgetBlock(type: .active, count: data.active, color: .coronayellow)
+
+            }.padding(.bottom, 15)
             Spacer()
         }
     }
