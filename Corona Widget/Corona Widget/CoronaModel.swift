@@ -5,11 +5,14 @@
 //Created by Aaryan Kothari on 22/07/20.
 
 
-import Foundation
+import WidgetKit
+import SwiftUI
+import Intents
 
 
 
-struct Corona : Codable {
+struct Corona : Codable, TimelineEntry {
+    var date: Date
     let Global : Global
     let Countries : [Countries]
 }
@@ -34,4 +37,12 @@ struct Countries : Codable{
     let NewRecovered : Double
     let TotalRecovered : Double
     let Date : String
+    
+    var totalActive : Double {
+        return TotalConfirmed - TotalDeaths - TotalRecovered
+    }
+    
+    var emoji : String {
+       return convertToEmoji(CountryCode)
+    }
 }

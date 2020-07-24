@@ -37,20 +37,13 @@ struct DataProvider : TimelineProvider {
     
     @ObservedObject var coronaStore = SessionStore()
     
-    func timeline(with context: Context, completion: @escaping (Timeline<CountryModel>) -> ()) {
+    func timeline(with context: Context, completion: @escaping (Timeline<Corona>) -> ()) {
         
-        var entries: [CountryModel] = []
+        var entries: [Corona] = []
         
         let refresh = Calendar.current.date(byAdding: .second, value: 20, to: Date()) ?? Date()
         coronaStore.fetch{ corona in
-            let country = getCountryDetails(corona)
-            let total = country.TotalConfirmed
-            let deaths = country.TotalDeaths
-            let recovered = country.TotalRecovered
-            let active = total - deaths - recovered
-            let emoji = convertToEmoji(str: country.CountryCode)
-            let entryData = CountryModel.init(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: country.Country, code: country.CountryCode.lowercased(), emoji: emoji, global: corona.Global)
-            entries.append(entryData)
+            entries.append(corona)
             let timeline = Timeline(entries: entries, policy: .after(refresh))
             
             print("update")
@@ -66,18 +59,10 @@ struct DataProvider : TimelineProvider {
         return mycountry.first!
     }
     
-    func snapshot(with context: Context, completion: @escaping (CountryModel) -> ()) {
+    func snapshot(with context: Context, completion: @escaping (Corona) -> ()) {
         coronaStore.fetch{ corona in
-            let country = getCountryDetails(corona)
-            let total = country.TotalConfirmed
-            let deaths = country.TotalDeaths
-            let recovered = country.TotalRecovered
-            let active = total - deaths - recovered
-            let emoji = convertToEmoji(str: country.CountryCode)
             
-            let entryData = CountryModel.init(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: country.Country, code: country.CountryCode.lowercased(), emoji: emoji, global: corona.Global)
-            
-            completion(entryData)
+            completion(corona)
         }
     }
 }
@@ -94,7 +79,7 @@ struct WidgetView : View{
             case .systemMedium:
                 mediumWidget(data: CountryData(data))
             case .systemLarge:
-                largeWidget(data: data.global)
+                largeWidget(data: data.Global, countries: data.Countries)
             @unknown default:
                 smallWidget(data: CountryData(data))
             }
@@ -104,6 +89,7 @@ struct WidgetView : View{
 
 struct largeWidget : View {
     var data : Global
+    var countries : Countries
     var body : some View {
         VStack{
             HStack{
@@ -124,6 +110,10 @@ struct largeWidget : View {
     
     func totalActive()-> Double{
         return data.TotalConfirmed - data.TotalDeaths - data.TotalRecovered
+    }
+    
+    func topTen()->[String]{
+     return []
     }
 }
 

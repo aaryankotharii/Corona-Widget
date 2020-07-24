@@ -10,7 +10,7 @@ import SwiftUI
 //MARK: systemSmall Widget
 
 struct smallWidget : View {
-    var data : CountryData
+    var data : Countries
     var body : some View {
         VStack{
             HStack{
@@ -24,10 +24,10 @@ struct smallWidget : View {
             .padding(.all, 10)
             .background(Color.pink)
             VStack(alignment:.leading){
-                smallWidgetBlock(type: .total, count: data.total, color: .coronapink)
-                smallWidgetBlock(type: .recovered, count: data.recovered, color: .coronagreen)
-                smallWidgetBlock(type: .deaths, count: data.deaths, color: .coronagrey)
-                smallWidgetBlock(type: .active, count: data.active, color: .coronayellow)
+                smallWidgetBlock(type: .total, count: data.TotalConfirmed, color: .coronapink)
+                smallWidgetBlock(type: .recovered, count: data.TotalRecovered, color: .coronagreen)
+                smallWidgetBlock(type: .deaths, count: data.TotalRecovered, color: .coronagrey)
+                smallWidgetBlock(type: .active, count: data.totalActive, color: .coronayellow)
 
             }.padding(.bottom, 15)
             Spacer()
