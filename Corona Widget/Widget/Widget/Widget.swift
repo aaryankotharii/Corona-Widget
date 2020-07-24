@@ -18,7 +18,7 @@ struct DataProvider : TimelineProvider {
         
         var entries: [CoronaData] = []
         
-        let refresh = Calendar.current.date(byAdding: .second, value: 20, to: Date()) ?? Date()
+        let refresh = Calendar.current.date(byAdding: .hour, value: 10, to: Date()) ?? Date()
         coronaStore.fetch{ corona in
             entries.append(CoronaData(corona))
             let timeline = Timeline(entries: entries, policy: .after(refresh))
@@ -112,7 +112,7 @@ struct largeWidget : View {
                 }
             }.padding(.bottom,30)
         }
-        }.background(LinearGradient(gradient: Gradient(colors: [.coronagreen,.blue,.white]), startPoint: .bottomLeading, endPoint: .topTrailing))
+        }.background(LinearGradient(gradient: Gradient(colors: [.coronapink,.white]), startPoint: .bottom, endPoint: .top))
     }
     
     func totalActive()-> Double{
