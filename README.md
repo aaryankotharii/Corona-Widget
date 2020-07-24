@@ -40,6 +40,6 @@ struct CurrentCountry {
 }
 ```
 
-- choose your choice of country from Country enumeraion. <b> default is 🇮🇳 India <b>
+- choose your choice of country from Country enumeraion. <b> default is 🇮🇳 India
 - run the application
 
