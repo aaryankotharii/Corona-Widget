@@ -42,4 +42,21 @@ struct CurrentCountry {
 
 - choose your choice of country from Country enumeraion. <b> default is 🇮🇳 India
 - run the application
+ 
+# Includes :
+- SwiftUI
+- WidgetKit
+- Intents
+- Combine
+- Networking
+- Charts
+ 
+# Author
+* [Aaryan Kothari](https://github.com/aaryankotharii)
+
+# License
+
+ Copyright 2020 [Aaryan Kothari.](https://github.com/aaryankotharii/Corona-Widget/blob/master/LICENSE)
+
+ Licensed under MIT License: https://opensource.org/licenses/MIT
 
