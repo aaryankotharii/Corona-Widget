@@ -8,6 +8,7 @@
 import WidgetKit
 import SwiftUI
 import Intents
+import MapKit
 
 struct CountryModel : TimelineEntry {
     var date: Date
@@ -16,6 +17,7 @@ struct CountryModel : TimelineEntry {
     var deaths : Double
     var recovered : Double
     var name : String
+    var code : String
     var emoji : String
 }
 
@@ -29,11 +31,12 @@ struct DataProvider : TimelineProvider {
         
         let refresh = Calendar.current.date(byAdding: .second, value: 20, to: Date()) ?? Date()
         coronaStore.fetch{ corona in
-            let total = corona.Global.TotalConfirmed
-            let deaths = corona.Global.TotalDeaths
-            let recovered = corona.Global.TotalRecovered
+            let country = getCountryDetails(corona)
+            let total = country.TotalConfirmed
+            let deaths = country.TotalDeaths
+            let recovered = country.TotalRecovered
             let active = total - deaths - recovered
-            let entryData = CountryModel(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: "India", emoji: "🇮🇳")
+            let entryData = CountryModel(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: country.Country, code: country.CountryCode.lowercased(), emoji: "🇮🇳")
             entries.append(entryData)
             let timeline = Timeline(entries: entries, policy: .after(refresh))
             
@@ -73,7 +76,7 @@ struct WidgetView : View{
             case .systemSmall:
                 smallWidget(data: data)
             case .systemMedium:
-                largeWidget(data: data)
+                mediumWidget(data: data)
             case .systemLarge:
                 largeWidget(data: data)
             @unknown default:
@@ -169,8 +172,12 @@ struct largeWidget : View {
     var data : CountryModel
     var body : some View {
         HStack{
-          
+          MapView(coordinate: CLLocationCoordinate2D(latitude: 100, longitude: 120))
         }
+    }
+    
+    func fetchCoordinates(){
+        
     }
 }
 
@@ -242,7 +249,7 @@ struct Config : Widget {
 
 struct Widget_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetView(data: CountryModel(date: Date(), total: 100, active: 30, deaths: 20, recovered: 50,name: "India",emoji: "🇮🇳"))
+        WidgetView(data: CountryModel(date: Date(), total: 100, active: 30, deaths: 20, recovered: 50,name: "India", code: "IN",emoji: "🇮🇳"))
             .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }
