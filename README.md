@@ -30,3 +30,16 @@ The type of content that each widget shows varies based on users choice and widg
 - run the app.
 ## 
 ## ⚠️ Xcode 12.0 or above is required to run this project.
+
+# How to Use?
+- Go to [CurrentCountry.swift](https://github.com/aaryankotharii/Corona-Widget/blob/master/Corona%20Widget/Widget/CurrentCountry.swift)
+
+``` swift
+struct CurrentCountry {
+    static let country : Country = .india
+}
+```
+
+- choose your choice of country from Country enumeraion. <b> default is 🇮🇳 India <b>
+- run the application
+
