@@ -44,6 +44,8 @@
 		5BF143C424CAAA6A00BF5729 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143C224CAAA6A00BF5729 /* Countries.swift */; };
 		5BF143C624CAAB8700BF5729 /* CurrentCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143C524CAAB8700BF5729 /* CurrentCountry.swift */; };
 		5BF143C724CAAB8700BF5729 /* CurrentCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143C524CAAB8700BF5729 /* CurrentCountry.swift */; };
+		5BF143C924CAAE8200BF5729 /* emojiConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143C824CAAE8200BF5729 /* emojiConverter.swift */; };
+		5BF143CA24CAAE8200BF5729 /* emojiConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143C824CAAE8200BF5729 /* emojiConverter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,7 @@
 		5BF143BF24CAAA1300BF5729 /* countryCoord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = countryCoord.swift; sourceTree = "<group>"; };
 		5BF143C224CAAA6A00BF5729 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
 		5BF143C524CAAB8700BF5729 /* CurrentCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCountry.swift; sourceTree = "<group>"; };
+		5BF143C824CAAE8200BF5729 /* emojiConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emojiConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +155,7 @@
 				5BF143BC24CAA93300BF5729 /* mapView.swift */,
 				5BF143BF24CAAA1300BF5729 /* countryCoord.swift */,
 				5BF143C224CAAA6A00BF5729 /* Countries.swift */,
+				5BF143C824CAAE8200BF5729 /* emojiConverter.swift */,
 			);
 			path = "Corona Widget";
 			sourceTree = "<group>";
@@ -315,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BF143C924CAAE8200BF5729 /* emojiConverter.swift in Sources */,
 				5BB601EE24CA9C4C00607A17 /* PieChart.swift in Sources */,
 				5BB601F124CA9C6D00607A17 /* PieChartData.swift in Sources */,
 				5B0F50C324C76B7900F273CD /* ContentView.swift in Sources */,
@@ -349,6 +354,7 @@
 				5BB601EC24CA9B9D00607A17 /* SlideData.swift in Sources */,
 				5BB601F224CA9C6D00607A17 /* PieChartData.swift in Sources */,
 				5BBD8BF624C82E9400DD1C08 /* Cases.swift in Sources */,
+				5BF143CA24CAAE8200BF5729 /* emojiConverter.swift in Sources */,
 				5BBD8BF024C7F12800DD1C08 /* CoronaClient.swift in Sources */,
 				5BBD8BEF24C7EE8C00DD1C08 /* CoronaModel.swift in Sources */,
 				5BF143C424CAAA6A00BF5729 /* Countries.swift in Sources */,
