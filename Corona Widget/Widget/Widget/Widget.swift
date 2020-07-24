@@ -10,40 +10,17 @@ import SwiftUI
 import Intents
 import MapKit
 
-struct CountryModel : TimelineEntry {
-    var date: Date
-    var total : Double
-    var active : Double
-    var deaths : Double
-    var recovered : Double
-    var name : String
-    var code : String
-    var emoji : String
-    var global : Global
-}
-
-struct GlobalData {
-    var total : Double = 0.0
-    var newTotal : Double = 0.0
-    var active : Double = 0.0
-    var newActive : Double = 0.0
-    var deaths : Double = 0.0
-    var newDeaths : Double = 0.0
-    var recovered : Double = 0.0
-    var newRecovered : Double = 0.0
-}
-
 struct DataProvider : TimelineProvider {
     
     @ObservedObject var coronaStore = SessionStore()
     
-    func timeline(with context: Context, completion: @escaping (Timeline<Corona>) -> ()) {
+    func timeline(with context: Context, completion: @escaping (Timeline<CoronaData>) -> ()) {
         
-        var entries: [Corona] = []
+        var entries: [CoronaData] = []
         
         let refresh = Calendar.current.date(byAdding: .second, value: 20, to: Date()) ?? Date()
         coronaStore.fetch{ corona in
-            entries.append(corona)
+            entries.append(CoronaData(corona))
             let timeline = Timeline(entries: entries, policy: .after(refresh))
             
             print("update")
@@ -53,10 +30,9 @@ struct DataProvider : TimelineProvider {
     }
 
     
-    func snapshot(with context: Context, completion: @escaping (Corona) -> ()) {
+    func snapshot(with context: Context, completion: @escaping (CoronaData) -> ()) {
         coronaStore.fetch{ corona in
-            
-            completion(corona)
+            completion(CoronaData(corona))
         }
     }
 }
@@ -89,7 +65,7 @@ struct WidgetView : View{
 }
 
 struct largeWidget : View {
-    var data : Corona
+    var data : CoronaData
     var body : some View {
         VStack{
             HStack{
@@ -113,6 +89,7 @@ struct largeWidget : View {
     }
     
     func topTen()->[String]{
+        let sorted = data.Countries.sorted { $0.TotalConfirmed >  $1.TotalConfirmed}
      return []
     }
 }
@@ -150,15 +127,4 @@ struct Config : Widget {
 //    }
 //}
 
-extension CountryData {
-    init(_ data : CountryModel){
-        self.date =  Date()
-        self.total = data.total
-        self.active = data.active
-        self.deaths = data.deaths
-        self.recovered = data.recovered
-        self.name = data.name
-        self.code = data.code
-        self.emoji = data.emoji
-    }
-}
+

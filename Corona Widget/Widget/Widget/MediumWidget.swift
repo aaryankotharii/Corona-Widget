@@ -13,12 +13,12 @@ struct mediumWidget : View {
     var data : Countries
     var body : some View {
         HStack{
-            PieChart(pieChartData: PieChartData(data: [data.totalActive, data.TotalDeaths, data.TotalRecovered],colors:[.coronagreen,.coronagrey,.coronayellow]))
+            PieChart(pieChartData: PieChartData(data: [data.totalActive(), data.TotalDeaths, data.TotalRecovered],colors:[.coronagreen,.coronagrey,.coronayellow]))
                 .padding(.all,25)
             Spacer()
             VStack(alignment:.leading){
                 HStack{
-                    Text(data.emoji)
+                    Text(data.emoji())
                     Text(data.Country)
                     Spacer()
                 }.font(.system(size: 35))
@@ -31,7 +31,7 @@ struct mediumWidget : View {
                         .foregroundColor(.coronagreen)
                     Text("Deaths: "+data.TotalDeaths.cases)
                         .foregroundColor(.coronagrey)
-                    Text("Active: "+data.totalActive.cases)
+                    Text("Active: "+data.totalActive().cases)
                         .foregroundColor(.coronayellow)
                 }
             }.padding(.bottom, 15)

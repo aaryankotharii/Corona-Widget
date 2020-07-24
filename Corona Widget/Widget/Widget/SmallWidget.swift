@@ -15,7 +15,7 @@ struct smallWidget : View {
         VStack{
             HStack{
                 Spacer()
-                Text(data.emoji)
+                Text(data.emoji())
                 Text(data.Country)
                 Spacer()
             }.font(.headline)
@@ -27,7 +27,7 @@ struct smallWidget : View {
                 smallWidgetBlock(type: .total, count: data.TotalConfirmed, color: .coronapink)
                 smallWidgetBlock(type: .recovered, count: data.TotalRecovered, color: .coronagreen)
                 smallWidgetBlock(type: .deaths, count: data.TotalRecovered, color: .coronagrey)
-                smallWidgetBlock(type: .active, count: data.totalActive, color: .coronayellow)
+                smallWidgetBlock(type: .active, count: data.totalActive(), color: .coronayellow)
                 
             }.padding(.bottom, 15)
             Spacer()

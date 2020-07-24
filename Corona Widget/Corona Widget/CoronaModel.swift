@@ -11,8 +11,7 @@ import Intents
 
 
 
-struct Corona : Codable, TimelineEntry {
-    var date: Date
+struct Corona : Codable {
     let Global : Global
     let Countries : [Countries]
 }
@@ -38,11 +37,23 @@ struct Countries : Codable{
     let TotalRecovered : Double
     let Date : String
     
-    var totalActive : Double {
+    func totalActive() -> Double {
         return TotalConfirmed - TotalDeaths - TotalRecovered
     }
     
-    var emoji : String {
+    func emoji() -> String {
         return convertToEmoji(str: CountryCode)
+    }
+}
+
+
+struct CoronaData : TimelineEntry {
+    var date =  Date()
+    let Global : Global
+    let Countries : [Countries]
+    
+    init(_ data : Corona){
+        self.Global = data.Global
+        self.Countries = data.Countries
     }
 }
