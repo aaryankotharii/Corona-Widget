@@ -19,6 +19,18 @@ struct CountryModel : TimelineEntry {
     var name : String
     var code : String
     var emoji : String
+    var global : Global
+}
+
+struct GlobalData {
+    var total : Double = 0.0
+    var newTotal : Double = 0.0
+    var active : Double = 0.0
+    var newActive : Double = 0.0
+    var deaths : Double = 0.0
+    var newDeaths : Double = 0.0
+    var recovered : Double = 0.0
+    var newRecovered : Double = 0.0
 }
 
 struct DataProvider : TimelineProvider {
@@ -37,7 +49,7 @@ struct DataProvider : TimelineProvider {
             let recovered = country.TotalRecovered
             let active = total - deaths - recovered
             let emoji = convertToEmoji(str: country.CountryCode)
-            let entryData = CountryModel.init(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: country.Country, code: country.CountryCode.lowercased(), emoji: emoji)
+            let entryData = CountryModel.init(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: country.Country, code: country.CountryCode.lowercased(), emoji: emoji, global: corona.Global)
             entries.append(entryData)
             let timeline = Timeline(entries: entries, policy: .after(refresh))
             
@@ -63,7 +75,7 @@ struct DataProvider : TimelineProvider {
             let active = total - deaths - recovered
             let emoji = convertToEmoji(str: country.CountryCode)
 
-            let entryData = CountryModel.init(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: country.Country, code: country.CountryCode.lowercased(), emoji: emoji)
+            let entryData = CountryModel.init(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: country.Country, code: country.CountryCode.lowercased(), emoji: emoji, global: corona.Global)
             
             completion(entryData)
         }
@@ -101,9 +113,22 @@ struct largeWidget : View {
                     .padding(.all,20)
             }
             VStack{
-                Text("Total cases: \(data.)")
+                countStack(total: data.total, new: 100, color: .coronapink, name: "cases")
             }
             Spacer()
+        }
+    }
+}
+
+struct countStack : View {
+    let total : Double
+    let new : Double
+    let color : Color
+    let name : String
+    var body: some View {
+        HStack{
+            Text("Total \(name) : \(Int(total))")
+            Text(" + \(Int(new))")
         }
     }
 }
@@ -120,12 +145,12 @@ struct Config : Widget {
 }
 
 
-struct Widget_Previews: PreviewProvider {
-    static var previews: some View {
-        WidgetView(data: CountryModel(date: Date(), total: 100, active: 30, deaths: 20, recovered: 50,name: "India", code: "IN",emoji: "🇮🇳"))
-            .previewContext(WidgetPreviewContext(family: .systemLarge))
-    }
-}
+//struct Widget_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WidgetView(data: CountryModel(date: Date(), total: 100, active: 30, deaths: 20, recovered: 50,name: "India", code: "IN",emoji: "🇮🇳", global: Global()))
+//            .previewContext(WidgetPreviewContext(family: .systemLarge))
+//    }
+//}
 
 extension CountryData {
     init(_ data : CountryModel){
