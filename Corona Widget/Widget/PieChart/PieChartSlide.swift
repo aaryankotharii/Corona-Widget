@@ -1,5 +1,5 @@
 //
-//  piChartSlide.swift
+//  PieChartSlide.swift
 //  Corona Widget
 //
 //  Created by Aaryan Kothari on 24/07/20.

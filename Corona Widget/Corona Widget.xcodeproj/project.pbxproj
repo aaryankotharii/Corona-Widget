@@ -18,10 +18,14 @@
 		5B0F50E024C76BD600F273CD /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F50DC24C76BD400F273CD /* Widget.intentdefinition */; };
 		5B0F50E124C76BD600F273CD /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F50DC24C76BD400F273CD /* Widget.intentdefinition */; };
 		5B0F50E424C76BD600F273CD /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5B0F50D324C76BD400F273CD /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		5BB601E724CA9B6600607A17 /* piChartSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB601E624CA9B6600607A17 /* piChartSlide.swift */; };
-		5BB601E824CA9B6D00607A17 /* piChartSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB601E624CA9B6600607A17 /* piChartSlide.swift */; };
+		5BB601E724CA9B6600607A17 /* PieChartSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB601E624CA9B6600607A17 /* PieChartSlide.swift */; };
+		5BB601E824CA9B6D00607A17 /* PieChartSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB601E624CA9B6600607A17 /* PieChartSlide.swift */; };
 		5BB601EB24CA9B9500607A17 /* SlideData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB601EA24CA9B9500607A17 /* SlideData.swift */; };
 		5BB601EC24CA9B9D00607A17 /* SlideData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB601EA24CA9B9500607A17 /* SlideData.swift */; };
+		5BB601EE24CA9C4C00607A17 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB601ED24CA9C4C00607A17 /* PieChart.swift */; };
+		5BB601EF24CA9C4C00607A17 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB601ED24CA9C4C00607A17 /* PieChart.swift */; };
+		5BB601F124CA9C6D00607A17 /* PieChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB601F024CA9C6D00607A17 /* PieChartData.swift */; };
+		5BB601F224CA9C6D00607A17 /* PieChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB601F024CA9C6D00607A17 /* PieChartData.swift */; };
 		5BBD8BE724C7718500DD1C08 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8BE624C7718500DD1C08 /* Color.swift */; };
 		5BBD8BE824C7775600DD1C08 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8BE624C7718500DD1C08 /* Color.swift */; };
 		5BBD8BEC24C7ED4D00DD1C08 /* CoronaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8BEB24C7ED4D00DD1C08 /* CoronaClient.swift */; };
@@ -72,8 +76,10 @@
 		5B0F50DC24C76BD400F273CD /* Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Widget.intentdefinition; sourceTree = "<group>"; };
 		5B0F50DD24C76BD600F273CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B0F50DF24C76BD600F273CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5BB601E624CA9B6600607A17 /* piChartSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = piChartSlide.swift; sourceTree = "<group>"; };
+		5BB601E624CA9B6600607A17 /* PieChartSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartSlide.swift; sourceTree = "<group>"; };
 		5BB601EA24CA9B9500607A17 /* SlideData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideData.swift; sourceTree = "<group>"; };
+		5BB601ED24CA9C4C00607A17 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
+		5BB601F024CA9C6D00607A17 /* PieChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartData.swift; sourceTree = "<group>"; };
 		5BBD8BE624C7718500DD1C08 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		5BBD8BEB24C7ED4D00DD1C08 /* CoronaClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaClient.swift; sourceTree = "<group>"; };
 		5BBD8BED24C7EE8B00DD1C08 /* CoronaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaModel.swift; sourceTree = "<group>"; };
@@ -155,13 +161,13 @@
 		5B0F50D924C76BD400F273CD /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				5BB601F324CA9E9600607A17 /* PieChart */,
 				5BB601E924CA9B8B00607A17 /* Model */,
 				5B0F50EB24C770B000F273CD /* Extensions */,
 				5B0F50DA24C76BD400F273CD /* Widget.swift */,
 				5B0F50DC24C76BD400F273CD /* Widget.intentdefinition */,
 				5B0F50DD24C76BD600F273CD /* Assets.xcassets */,
 				5B0F50DF24C76BD600F273CD /* Info.plist */,
-				5BB601E624CA9B6600607A17 /* piChartSlide.swift */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -178,9 +184,19 @@
 		5BB601E924CA9B8B00607A17 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5BB601EA24CA9B9500607A17 /* SlideData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5BB601F324CA9E9600607A17 /* PieChart */ = {
+			isa = PBXGroup;
+			children = (
+				5BB601EA24CA9B9500607A17 /* SlideData.swift */,
+				5BB601E624CA9B6600607A17 /* PieChartSlide.swift */,
+				5BB601ED24CA9C4C00607A17 /* PieChart.swift */,
+				5BB601F024CA9C6D00607A17 /* PieChartData.swift */,
+			);
+			path = PieChart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,13 +299,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BB601EE24CA9C4C00607A17 /* PieChart.swift in Sources */,
+				5BB601F124CA9C6D00607A17 /* PieChartData.swift in Sources */,
 				5B0F50C324C76B7900F273CD /* ContentView.swift in Sources */,
 				5BBD8BF224C7F13500DD1C08 /* SessionStore.swift in Sources */,
 				5BBD8BEE24C7EE8B00DD1C08 /* CoronaModel.swift in Sources */,
 				5BBD8BE724C7718500DD1C08 /* Color.swift in Sources */,
 				5B0F50C124C76B7900F273CD /* Corona_WidgetApp.swift in Sources */,
 				5BBD8BF524C82E9400DD1C08 /* Cases.swift in Sources */,
-				5BB601E724CA9B6600607A17 /* piChartSlide.swift in Sources */,
+				5BB601E724CA9B6600607A17 /* PieChartSlide.swift in Sources */,
 				5BB601EB24CA9B9500607A17 /* SlideData.swift in Sources */,
 				5BBD8BEC24C7ED4D00DD1C08 /* CoronaClient.swift in Sources */,
 				5B0F50E124C76BD600F273CD /* Widget.intentdefinition in Sources */,
@@ -301,14 +319,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B0F50E024C76BD600F273CD /* Widget.intentdefinition in Sources */,
-				5BB601E824CA9B6D00607A17 /* piChartSlide.swift in Sources */,
+				5BB601E824CA9B6D00607A17 /* PieChartSlide.swift in Sources */,
 				5BBD8BE824C7775600DD1C08 /* Color.swift in Sources */,
 				5BBD8BF324C7F13500DD1C08 /* SessionStore.swift in Sources */,
 				5B0F50DB24C76BD400F273CD /* Widget.swift in Sources */,
 				5BB601EC24CA9B9D00607A17 /* SlideData.swift in Sources */,
+				5BB601F224CA9C6D00607A17 /* PieChartData.swift in Sources */,
 				5BBD8BF624C82E9400DD1C08 /* Cases.swift in Sources */,
 				5BBD8BF024C7F12800DD1C08 /* CoronaClient.swift in Sources */,
 				5BBD8BEF24C7EE8C00DD1C08 /* CoronaModel.swift in Sources */,
+				5BB601EF24CA9C4C00607A17 /* PieChart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

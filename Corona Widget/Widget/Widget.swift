@@ -141,7 +141,7 @@ struct mediumWidget : View {
             .foregroundColor(.white)
             .padding(.all, 10)
             .background(Color.pink)
-            GraphView(country: data)
+            PieChart(pieChartData: PieChartData(data: [1, 2, 3],colors:[.coronapink,.coronagrey,.coronagreen]))
             Spacer()
         }
     }
