@@ -142,6 +142,7 @@ struct mediumWidget : View {
             .padding(.all, 10)
             .background(Color.pink)
             PieChart(pieChartData: PieChartData(data: [1, 2, 3],colors:[.coronapink,.coronagrey,.coronagreen]))
+                .padding(.leading,50)
             Spacer()
         }
     }

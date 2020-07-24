@@ -12,7 +12,7 @@ public struct PieChartSlide: View {
     var slideData: SlideData
     
     var path: Path {
-        let chartSize = geometry.size.width
+        let chartSize = geometry.size.height
         let radius = chartSize / 2
         let centerX = radius
         let centerY = radius
