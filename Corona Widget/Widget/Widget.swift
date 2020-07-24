@@ -66,9 +66,9 @@ struct WidgetView : View{
             case .systemSmall:
                 smallWidget(data: data)
             case .systemMedium:
-                mediumWidget(data: data)
+                largeWidget(data: data)
             case .systemLarge:
-                smallWidget(data: data)
+                largeWidget(data: data)
             @unknown default:
                 smallWidget(data: data)
             }
@@ -158,15 +158,24 @@ struct mediumWidget : View {
     }
 }
 
+struct largeWidget : View {
+    var data : CountryModel
+    var body : some View {
+        HStack{
+          
+        }
+    }
+}
+
 struct GraphView : View {
     var country : CountryModel
     var body: some View {
         GeometryReader(content: { geometry in
             VStack{
-                Line(end: geometry.size.width * 0.75, value: country.total, color: .coronapink)
-                Line(end: geometry.size.width * recoveredpercent(), value: country.active, color: .coronagreen)
-                Line(end: geometry.size.width * deathPercent(), value: country.deaths, color: .coronagrey)
-                Line(end: geometry.size.width * activepercent(), value: country.active, color: .coronayellow)
+                BarLine(end: geometry.size.width * 0.75, value: country.total, color: .coronapink)
+                BarLine(end: geometry.size.width * recoveredpercent(), value: country.active, color: .coronagreen)
+                BarLine(end: geometry.size.width * deathPercent(), value: country.deaths, color: .coronagrey)
+                BarLine(end: geometry.size.width * activepercent(), value: country.active, color: .coronayellow)
             }
         })
     }
@@ -185,7 +194,7 @@ struct GraphView : View {
 }
 
 
-struct Line : View {
+struct BarLine : View {
     var end : CGFloat
     var value : Double
     var color : Color
@@ -227,7 +236,7 @@ struct Config : Widget {
 struct Widget_Previews: PreviewProvider {
     static var previews: some View {
         WidgetView(data: CountryModel(date: Date(), total: 100, active: 30, deaths: 20, recovered: 50,name: "India",emoji: "🇮🇳"))
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
+            .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }
 

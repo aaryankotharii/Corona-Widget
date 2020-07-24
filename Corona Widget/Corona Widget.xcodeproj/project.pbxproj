@@ -36,6 +36,8 @@
 		5BBD8BF324C7F13500DD1C08 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8BF124C7F13500DD1C08 /* SessionStore.swift */; };
 		5BBD8BF524C82E9400DD1C08 /* Cases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8BF424C82E9400DD1C08 /* Cases.swift */; };
 		5BBD8BF624C82E9400DD1C08 /* Cases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8BF424C82E9400DD1C08 /* Cases.swift */; };
+		5BF143BD24CAA93300BF5729 /* mapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143BC24CAA93300BF5729 /* mapView.swift */; };
+		5BF143BE24CAA93300BF5729 /* mapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143BC24CAA93300BF5729 /* mapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,7 @@
 		5BBD8BED24C7EE8B00DD1C08 /* CoronaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaModel.swift; sourceTree = "<group>"; };
 		5BBD8BF124C7F13500DD1C08 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		5BBD8BF424C82E9400DD1C08 /* Cases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cases.swift; sourceTree = "<group>"; };
+		5BF143BC24CAA93300BF5729 /* mapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +140,7 @@
 				5BBD8BEB24C7ED4D00DD1C08 /* CoronaClient.swift */,
 				5BBD8BED24C7EE8B00DD1C08 /* CoronaModel.swift */,
 				5BBD8BF124C7F13500DD1C08 /* SessionStore.swift */,
+				5BF143BC24CAA93300BF5729 /* mapView.swift */,
 			);
 			path = "Corona Widget";
 			sourceTree = "<group>";
@@ -306,6 +310,7 @@
 				5BBD8BEE24C7EE8B00DD1C08 /* CoronaModel.swift in Sources */,
 				5BBD8BE724C7718500DD1C08 /* Color.swift in Sources */,
 				5B0F50C124C76B7900F273CD /* Corona_WidgetApp.swift in Sources */,
+				5BF143BD24CAA93300BF5729 /* mapView.swift in Sources */,
 				5BBD8BF524C82E9400DD1C08 /* Cases.swift in Sources */,
 				5BB601E724CA9B6600607A17 /* PieChartSlide.swift in Sources */,
 				5BB601EB24CA9B9500607A17 /* SlideData.swift in Sources */,
@@ -323,6 +328,7 @@
 				5BBD8BE824C7775600DD1C08 /* Color.swift in Sources */,
 				5BBD8BF324C7F13500DD1C08 /* SessionStore.swift in Sources */,
 				5B0F50DB24C76BD400F273CD /* Widget.swift in Sources */,
+				5BF143BE24CAA93300BF5729 /* mapView.swift in Sources */,
 				5BB601EC24CA9B9D00607A17 /* SlideData.swift in Sources */,
 				5BB601F224CA9C6D00607A17 /* PieChartData.swift in Sources */,
 				5BBD8BF624C82E9400DD1C08 /* Cases.swift in Sources */,
