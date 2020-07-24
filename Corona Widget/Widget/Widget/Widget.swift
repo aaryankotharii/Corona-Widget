@@ -116,14 +116,14 @@ struct largeWidget : View {
                 countStack(total: data.TotalConfirmed, new: data.NewConfirmed, color: .coronapink, name: "confirmed")
                 countStack(total: data.TotalRecovered, new: data.NewRecovered, color: .coronagreen, name: "recovered")
                 countStack(total: data.TotalDeaths, new: data.NewDeaths, color: .coronagrey, name: "deaths")
-                countStack(total: totalActive(), new: 0.0, color: .coronapink, name: "active")
+                countStack(total: totalActive(), new: 0.0, color: .coronayellow, name: "active",isActive:true)
             }
             Spacer()
         }
     }
     
     func totalActive()-> Double{
-        return data.TotalConfirmed - data.TotalDeaths - data.TotalConfirmed
+        return data.TotalConfirmed - data.TotalDeaths - data.TotalRecovered
     }
 }
 
@@ -132,10 +132,11 @@ struct countStack : View {
     let new : Double
     let color : Color
     let name : String
+    var isActive = false
     var body: some View {
         HStack{
             Text("Total \(name) : \(Int(total))")
-            Text(" + \(Int(new))").foregroundColor(color)
+            Text(isActive ? "" : " + \(Int(new))").foregroundColor(color)
         }
     }
 }
