@@ -55,11 +55,12 @@ struct DataProvider : TimelineProvider {
     
     func snapshot(with context: Context, completion: @escaping (CountryModel) -> ()) {
         coronaStore.fetch{ corona in
-            let total = corona.Global.TotalConfirmed
-            let deaths = corona.Global.TotalDeaths
-            let recovered = corona.Global.TotalRecovered
+            let country = getCountryDetails(corona)
+            let total = country.TotalConfirmed
+            let deaths = country.TotalDeaths
+            let recovered = country.TotalRecovered
             let active = total - deaths - recovered
-            let entryData = CountryModel(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: "India", emoji: "🇮🇳")
+            let entryData = CountryModel(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: country.Country, code: country.CountryCode.lowercased(), emoji: "🇮🇳")
             
             completion(entryData)
         }
@@ -172,12 +173,17 @@ struct largeWidget : View {
     var data : CountryModel
     var body : some View {
         HStack{
-          MapView(coordinate: CLLocationCoordinate2D(latitude: 100, longitude: 120))
+          MapView(coordinate: fetchCoordinates())
         }
     }
     
-    func fetchCoordinates(){
-        
+    func fetchCoordinates()->CLLocationCoordinate2D{
+        let cc = data.code
+        let coord = countryCoord[cc]
+        let lat = coord![0]
+        let long = coord![1]
+        let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        return coordinates
     }
 }
 
