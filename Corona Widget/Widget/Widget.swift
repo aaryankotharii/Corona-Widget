@@ -43,6 +43,13 @@ struct DataProvider : TimelineProvider {
         }
     }
     
+    func getCountryDetails(_ corona : Corona)->Countries{
+        let country = CurrentCountry.county.rawValue
+        let countries = corona.Countries
+        let mycountry = countries.filter { $0.CountryCode == country}
+        return mycountry.first!
+    }
+    
     func snapshot(with context: Context, completion: @escaping (CountryModel) -> ()) {
         coronaStore.fetch{ corona in
             let total = corona.Global.TotalConfirmed
