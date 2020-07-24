@@ -18,16 +18,19 @@ struct ContentView: View {
             VStack{
                 Text("Total global cases:")
                     .font(.system(size: 20))
-            Text("\(corona.current?.Global.TotalConfirmed ?? 0)")
+            Text("\(Int(corona.current?.Global.TotalConfirmed ?? 0))")
                 .font(.system(size: 50))
                 .padding()
             }
             Spacer()
             buttonBar()
-        }.edgesIgnoringSafeArea(.all)
+                .padding(.bottom, 40)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .edgesIgnoringSafeArea(.all)
         .background(LinearGradient(gradient: Gradient(colors: [.white, Color(#colorLiteral(red: 0.631372549, green: 0.6, blue: 1, alpha: 1))]), startPoint: .top, endPoint: .bottom))
-        
         .onAppear(perform: fetch)
+        .edgesIgnoringSafeArea(.all)
         
     }
     func fetch(){
@@ -37,22 +40,33 @@ struct ContentView: View {
 
 struct buttonBar : View{
     var body : some View  {
-        HStack{
-            Link(destination: URL(string: "https://www.apple.com")!) {
-                Image(systemName: "link.circle.fill")
+        HStack(spacing:30){
+            Link(destination: URL(string: "https://github.com/aaryankotharii")!) {
+                Image("github")
+                    .resizable()
+                    .renderingMode(.original)
+                    .scaledToFit()
+                    .font(.largeTitle)
+            }
+            Link(destination: URL(string: "https://www.linkedin.com/in/aaryankotharii")!) {
+                Image("LinkedIn")
+                    .resizable()
+                    .renderingMode(.original)
+                    .scaledToFit()
                     .font(.largeTitle)
             }
             Link(destination: URL(string: "https://www.apple.com")!) {
-                Image(systemName: "link.circle.fill")
+                Image("mail")
+                    .resizable()
+                    .renderingMode(.original)
+                    .scaledToFit()
                     .font(.largeTitle)
             }
-            Link(destination: URL(string: "https://www.apple.com")!) {
-                Image(systemName: "link.circle.fill")
-                    .font(.largeTitle)
-            }
-        }
+        }.frame(height: 70, alignment: .center)
     }
 }
+
+
 
 
 
