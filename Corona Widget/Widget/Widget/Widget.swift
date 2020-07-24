@@ -82,7 +82,7 @@ struct WidgetView : View{
             case .systemMedium:
                 mediumWidget(data: CountryData(data))
             case .systemLarge:
-                mediumWidget(data: CountryData(data))
+                largeWidget(data: CountryData(data))
             @unknown default:
                 smallWidget(data: CountryData(data))
             }
@@ -94,7 +94,9 @@ struct largeWidget : View {
     var data : CountryData
     var body : some View {
         HStack{
-            GraphView(CountryData)
+            HStack{
+                Image("")
+            }
         }
     }
 }
