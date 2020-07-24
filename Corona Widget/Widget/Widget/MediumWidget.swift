@@ -10,28 +10,28 @@ import SwiftUI
 //MARK: systemMedium Widget
 
 struct mediumWidget : View {
-    var data : CountryData
+    var data : Countries
     var body : some View {
         HStack{
-            PieChart(pieChartData: PieChartData(data: [data.active, data.deaths, data.recovered],colors:[.coronagreen,.coronagrey,.coronayellow]))
+            PieChart(pieChartData: PieChartData(data: [data.totalActive, data.TotalDeaths, data.TotalRecovered],colors:[.coronagreen,.coronagrey,.coronayellow]))
                 .padding(.all,25)
             Spacer()
             VStack(alignment:.leading){
                 HStack{
                     Text(data.emoji)
-                    Text(data.name)
+                    Text(data.Country)
                     Spacer()
                 }.font(.system(size: 35))
                 .foregroundColor(.black)
                 .padding(.top,20)
                 VStack(alignment:.leading) {
-                    Text("Total: "+data.total.cases)
+                    Text("Total: "+data.TotalConfirmed.cases)
                         .foregroundColor(.coronapink)
-                    Text("Recovered: "+data.recovered.cases)
+                    Text("Recovered: "+data.TotalRecovered.cases)
                         .foregroundColor(.coronagreen)
-                    Text("Deaths: "+data.deaths.cases)
+                    Text("Deaths: "+data.TotalDeaths.cases)
                         .foregroundColor(.coronagrey)
-                    Text("Active: "+data.active.cases)
+                    Text("Active: "+data.totalActive.cases)
                         .foregroundColor(.coronayellow)
                 }
             }.padding(.bottom, 15)

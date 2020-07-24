@@ -43,6 +43,6 @@ struct Countries : Codable{
     }
     
     var emoji : String {
-       return convertToEmoji(CountryCode)
+        return convertToEmoji(str: CountryCode)
     }
 }
