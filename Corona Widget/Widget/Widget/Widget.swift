@@ -93,10 +93,17 @@ struct WidgetView : View{
 struct largeWidget : View {
     var data : CountryData
     var body : some View {
-        HStack{
+        VStack{
             HStack{
-                Image("")
+                Image("global")
+                    .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.all,20)
             }
+            VStack{
+                Text("Total cases: \(data.)")
+            }
+            Spacer()
         }
     }
 }
