@@ -20,9 +20,7 @@ class CoronaClient {
             guard let url = url else { return }
     
             URLSession.shared.dataTask(with: url) { (data, response, error) in
-                guard let data = data, error == nil else{
-                    fatalError(error!.localizedDescription)
-                }
+                guard let data = data, error == nil else{  return  }
                 do{
                     let coronaData = try decoder.decode(Corona.self, from: data)
                     DispatchQueue.main.async {

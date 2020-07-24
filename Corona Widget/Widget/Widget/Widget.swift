@@ -74,7 +74,7 @@ struct DataProvider : TimelineProvider {
             let recovered = country.TotalRecovered
             let active = total - deaths - recovered
             let emoji = convertToEmoji(str: country.CountryCode)
-
+            
             let entryData = CountryModel.init(date: Date(), total: total , active: active, deaths: deaths , recovered: recovered , name: country.Country, code: country.CountryCode.lowercased(), emoji: emoji, global: corona.Global)
             
             completion(entryData)
@@ -94,7 +94,7 @@ struct WidgetView : View{
             case .systemMedium:
                 mediumWidget(data: CountryData(data))
             case .systemLarge:
-                largeWidget(data: CountryData(data))
+                largeWidget(data: data.global)
             @unknown default:
                 smallWidget(data: CountryData(data))
             }
@@ -103,7 +103,7 @@ struct WidgetView : View{
 }
 
 struct largeWidget : View {
-    var data : CountryData
+    var data : Global
     var body : some View {
         VStack{
             HStack{
@@ -113,10 +113,17 @@ struct largeWidget : View {
                     .padding(.all,20)
             }
             VStack{
-                countStack(total: data.total, new: 100, color: .coronapink, name: "cases")
+                countStack(total: data.TotalConfirmed, new: data.NewConfirmed, color: .coronapink, name: "confirmed")
+                countStack(total: data.TotalRecovered, new: data.NewRecovered, color: .coronagreen, name: "recovered")
+                countStack(total: data.TotalDeaths, new: data.NewDeaths, color: .coronagrey, name: "deaths")
+                countStack(total: totalActive(), new: 0.0, color: .coronapink, name: "active")
             }
             Spacer()
         }
+    }
+    
+    func totalActive()-> Double{
+        return data.TotalConfirmed - data.TotalDeaths - data.TotalConfirmed
     }
 }
 
@@ -128,7 +135,7 @@ struct countStack : View {
     var body: some View {
         HStack{
             Text("Total \(name) : \(Int(total))")
-            Text(" + \(Int(new))")
+            Text(" + \(Int(new))").foregroundColor(color)
         }
     }
 }

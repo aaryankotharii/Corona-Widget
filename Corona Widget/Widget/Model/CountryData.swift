@@ -16,5 +16,4 @@ struct CountryData{
     var name : String
     var code : String
     var emoji : String
-
 }
