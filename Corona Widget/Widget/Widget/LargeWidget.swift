@@ -12,7 +12,10 @@ import Intents
 //MARK: systemLarge Widget
 
 struct largeWidget : View {
+    // MARK - PROPERTIES
     var data : CoronaData
+    
+    // MARK - BODY
     var body : some View {
         VStack{
             HStack{
@@ -20,20 +23,8 @@ struct largeWidget : View {
                     .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
                     .aspectRatio(contentMode: .fit)
                     .padding(.all,20)
-            }
-            VStack(alignment:.leading){
-                countStack(total: data.Global.TotalConfirmed,color: .coronapink, name: "confirmed")
-                countStack(total: data.Global.TotalRecovered,  color: .coronagreen, name: "recovered")
-                countStack(total: data.Global.TotalDeaths,color: .coronagrey, name: "deaths")
-                countStack(total: totalActive(),color: .coronayellow, name: "active")
-            }
-
-            VStack(alignment:.leading){
-                countStack(total: data.Global.NewConfirmed,color: .coronapink, name: "confirmed",isActive: true,type: .total)
-                countStack(total: data.Global.NewRecovered, color: .coronagreen, name: "recovered",isActive: true,type: .recovered)
-                countStack(total: data.Global.NewDeaths,color: .coronagrey, name: "deaths",isActive: true,type: .deaths)
-            }
-            
+            } //: HSTACK
+            LargeWidgetBlock(data: data)
             Spacer()
             VStack(alignment:.leading){
             Text("TOP  10  MOST  AFFECTED  COUNTRIES  :-")
@@ -44,9 +35,10 @@ struct largeWidget : View {
                 Text(emoji)
                     .background(LinearGradient(gradient: Gradient(colors: [.red,.orange,.yellow]), startPoint: .bottomLeading, endPoint: .topTrailing))
                     .cornerRadius(5)
-                }
-            }.padding(.bottom,30)
-        }
+                } //: FOREACH
+            } //: HSTACK
+            .padding(.bottom,30)
+        } //: VSTACK
         }
     }
     
@@ -62,27 +54,5 @@ struct largeWidget : View {
      return emojis
     }
 }
-
-struct countStack : View {
-    let total : Double
-    let color : Color
-    let name : String
-    var isActive = false
-    var type : coronaType = .total
-    var body: some View {
-        HStack{
-            Group{
-                if isActive{
-                    Image(type.image)
-                        .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
-                        .aspectRatio(contentMode: .fit)
-                }
-            }
-            Text((isActive ? "New " : "Total ") + "\(name) : \(Int(total))").bold()
-        }
-    }
-}
-
-
 
 //END
