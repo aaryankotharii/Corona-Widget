@@ -23,6 +23,7 @@
 		5B47834A251CE58300A753EB /* MediumWidgetBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B478348251CE50C00A753EB /* MediumWidgetBlock.swift */; };
 		5B47834B251CE58E00A753EB /* SmallWidgetBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B478346251CE3C500A753EB /* SmallWidgetBlock.swift */; };
 		5B47834D251CE64E00A753EB /* LargeWidgetBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B47834C251CE64E00A753EB /* LargeWidgetBlock.swift */; };
+		5B47834E251CE6E100A753EB /* LargeWidgetBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B47834C251CE64E00A753EB /* LargeWidgetBlock.swift */; };
 		5BB601E724CA9B6600607A17 /* PieChartSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB601E624CA9B6600607A17 /* PieChartSlide.swift */; };
 		5BB601E824CA9B6D00607A17 /* PieChartSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB601E624CA9B6600607A17 /* PieChartSlide.swift */; };
 		5BB601EB24CA9B9500607A17 /* SlideData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB601EA24CA9B9500607A17 /* SlideData.swift */; };
@@ -415,6 +416,7 @@
 				5BF143C624CAAB8700BF5729 /* CurrentCountry.swift in Sources */,
 				5BBD8BE724C7718500DD1C08 /* Color.swift in Sources */,
 				5B0F50C124C76B7900F273CD /* Corona_WidgetApp.swift in Sources */,
+				5B47834E251CE6E100A753EB /* LargeWidgetBlock.swift in Sources */,
 				5BBD8BF524C82E9400DD1C08 /* Cases.swift in Sources */,
 				5B47834B251CE58E00A753EB /* SmallWidgetBlock.swift in Sources */,
 				5BB601E724CA9B6600607A17 /* PieChartSlide.swift in Sources */,

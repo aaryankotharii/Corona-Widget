@@ -27,6 +27,11 @@ struct LargeWidgetBlock: View {
             } //: VSTACK
         } //: VSTACK
     }
+    
+    /// function to calculate `Global total active` cases
+    func totalActive()-> Double{
+        return data.Global.TotalConfirmed - data.Global.TotalDeaths - data.Global.TotalRecovered
+    }
 }
 
 struct countStack : View {

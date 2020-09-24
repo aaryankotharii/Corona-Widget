@@ -27,31 +27,28 @@ struct largeWidget : View {
             LargeWidgetBlock(data: data)
             Spacer()
             VStack(alignment:.leading){
-            Text("TOP  10  MOST  AFFECTED  COUNTRIES  :-")
-                .font(.subheadline)
-                .foregroundColor(.coronapink)
-            HStack{
-            ForEach(topTen(), id:\.self) { emoji in
-                Text(emoji)
-                    .background(LinearGradient(gradient: Gradient(colors: [.red,.orange,.yellow]), startPoint: .bottomLeading, endPoint: .topTrailing))
-                    .cornerRadius(5)
-                } //: FOREACH
-            } //: HSTACK
-            .padding(.bottom,30)
-        } //: VSTACK
+                Text("TOP  10  MOST  AFFECTED  COUNTRIES  :-")
+                    .font(.subheadline)
+                    .foregroundColor(.coronapink)
+                HStack{
+                    ForEach(topTen(), id:\.self) { emoji in
+                        Text(emoji)
+                            .background(LinearGradient(gradient: Gradient(colors: [.red,.orange,.yellow]), startPoint: .bottomLeading, endPoint: .topTrailing))
+                            .cornerRadius(5)
+                    } //: FOREACH
+                } //: HSTACK
+                .padding(.bottom,30)
+            } //: VSTACK
         }
     }
     
-    func totalActive()-> Double{
-        return data.Global.TotalConfirmed - data.Global.TotalDeaths - data.Global.TotalRecovered
-    }
-    
+    /// function to find `Top 10` most affected countries
     func topTen()->[String]{
-    let sorted = data.Countries.sorted { $0.TotalConfirmed >  $1.TotalConfirmed}
+        let sorted = data.Countries.sorted { $0.TotalConfirmed >  $1.TotalConfirmed}
         let final = Array(sorted.prefix(10)).map { $0.CountryCode }
         let emojis = final.map { convertToEmoji(str: $0)}
         print(emojis)
-     return emojis
+        return emojis
     }
 }
 
