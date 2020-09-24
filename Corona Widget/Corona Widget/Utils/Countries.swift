@@ -7,6 +7,9 @@
 
 import Foundation
 
+// COUNTRIES
+/// list of countries whose widget you want!
+/// you can choose your country in `CurrentCountry.swift`
 public enum Country: String, Equatable, Hashable, Codable, CaseIterable {
     
     // MARK: - Cases
