@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - EXETNSION SHORTEN NUMBER
+
 extension Double {
     var cases : String {
         if self > 100000{
