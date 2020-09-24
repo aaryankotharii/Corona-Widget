@@ -7,6 +7,10 @@
 
 import Foundation
 
+//MARK: STRING TO EMOJI CONVERTER
+
+// function that convertes countryCode to country emoji!
+
 func convertToEmoji(str: String) -> String {
     let lowercased = str.lowercased()
     guard lowercased.count == 2 else { return "" }

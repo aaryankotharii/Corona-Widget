@@ -10,7 +10,6 @@ import SwiftUI
 import Intents
 
 
-
 struct Corona : Codable {
     let Global : Global
     let Countries : [Countries]

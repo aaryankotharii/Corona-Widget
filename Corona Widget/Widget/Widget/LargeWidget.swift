@@ -12,7 +12,10 @@ import Intents
 //MARK: systemLarge Widget
 
 struct largeWidget : View {
+    // MARK - PROPERTIES
     var data : CoronaData
+    
+    // MARK - BODY
     var body : some View {
         VStack{
             HStack{
@@ -20,69 +23,33 @@ struct largeWidget : View {
                     .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
                     .aspectRatio(contentMode: .fit)
                     .padding(.all,20)
-            }
-            VStack(alignment:.leading){
-                countStack(total: data.Global.TotalConfirmed,color: .coronapink, name: "confirmed")
-                countStack(total: data.Global.TotalRecovered,  color: .coronagreen, name: "recovered")
-                countStack(total: data.Global.TotalDeaths,color: .coronagrey, name: "deaths")
-                countStack(total: totalActive(),color: .coronayellow, name: "active")
-            }
-
-            VStack(alignment:.leading){
-                countStack(total: data.Global.NewConfirmed,color: .coronapink, name: "confirmed",isActive: true,type: .total)
-                countStack(total: data.Global.NewRecovered, color: .coronagreen, name: "recovered",isActive: true,type: .recovered)
-                countStack(total: data.Global.NewDeaths,color: .coronagrey, name: "deaths",isActive: true,type: .deaths)
-            }
-            
+            } //: HSTACK
+            LargeWidgetBlock(data: data)
             Spacer()
             VStack(alignment:.leading){
-            Text("TOP  10  MOST  AFFECTED  COUNTRIES  :-")
-                .font(.subheadline)
-                .foregroundColor(.coronapink)
-            HStack{
-            ForEach(topTen(), id:\.self) { emoji in
-                Text(emoji)
-                    .background(LinearGradient(gradient: Gradient(colors: [.red,.orange,.yellow]), startPoint: .bottomLeading, endPoint: .topTrailing))
-                    .cornerRadius(5)
-                }
-            }.padding(.bottom,30)
-        }
+                Text("TOP  10  MOST  AFFECTED  COUNTRIES  :-")
+                    .font(.subheadline)
+                    .foregroundColor(.coronapink)
+                HStack{
+                    ForEach(topTen(), id:\.self) { emoji in
+                        Text(emoji)
+                            .background(LinearGradient(gradient: Gradient(colors: [.red,.orange,.yellow]), startPoint: .bottomLeading, endPoint: .topTrailing))
+                            .cornerRadius(5)
+                    } //: FOREACH
+                } //: HSTACK
+                .padding(.bottom,30)
+            } //: VSTACK
         }
     }
     
-    func totalActive()-> Double{
-        return data.Global.TotalConfirmed - data.Global.TotalDeaths - data.Global.TotalRecovered
-    }
-    
+    /// function to find `Top 10` most affected countries
     func topTen()->[String]{
-    let sorted = data.Countries.sorted { $0.TotalConfirmed >  $1.TotalConfirmed}
+        let sorted = data.Countries.sorted { $0.TotalConfirmed >  $1.TotalConfirmed}
         let final = Array(sorted.prefix(10)).map { $0.CountryCode }
         let emojis = final.map { convertToEmoji(str: $0)}
         print(emojis)
-     return emojis
+        return emojis
     }
 }
-
-struct countStack : View {
-    let total : Double
-    let color : Color
-    let name : String
-    var isActive = false
-    var type : coronaType = .total
-    var body: some View {
-        HStack{
-            Group{
-                if isActive{
-                    Image(type.image)
-                        .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
-                        .aspectRatio(contentMode: .fit)
-                }
-            }
-            Text((isActive ? "New " : "Total ") + "\(name) : \(Int(total))").bold()
-        }
-    }
-}
-
-
 
 //END
