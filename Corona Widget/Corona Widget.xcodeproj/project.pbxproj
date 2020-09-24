@@ -42,8 +42,6 @@
 		5BBD8BF324C7F13500DD1C08 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8BF124C7F13500DD1C08 /* SessionStore.swift */; };
 		5BBD8BF524C82E9400DD1C08 /* Cases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8BF424C82E9400DD1C08 /* Cases.swift */; };
 		5BBD8BF624C82E9400DD1C08 /* Cases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBD8BF424C82E9400DD1C08 /* Cases.swift */; };
-		5BCD7BE124CABAA60035E50B /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCD7BE024CABAA60035E50B /* BarChart.swift */; };
-		5BCD7BE224CABAA60035E50B /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCD7BE024CABAA60035E50B /* BarChart.swift */; };
 		5BCD7BE424CAC0190035E50B /* CountryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCD7BE324CAC0190035E50B /* CountryData.swift */; };
 		5BCD7BE524CAC0190035E50B /* CountryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCD7BE324CAC0190035E50B /* CountryData.swift */; };
 		5BCD7BE724CAC1C30035E50B /* SmallWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCD7BE624CAC1C30035E50B /* SmallWidget.swift */; };
@@ -62,8 +60,6 @@
 		5BF143CA24CAAE8200BF5729 /* emojiConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143C824CAAE8200BF5729 /* emojiConverter.swift */; };
 		5BF143CF24CAB18300BF5729 /* CoronaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143CE24CAB18300BF5729 /* CoronaType.swift */; };
 		5BF143D024CAB18300BF5729 /* CoronaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143CE24CAB18300BF5729 /* CoronaType.swift */; };
-		5BF143D424CAB2AA00BF5729 /* BarLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143D324CAB2AA00BF5729 /* BarLine.swift */; };
-		5BF143D524CAB2AA00BF5729 /* BarLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143D324CAB2AA00BF5729 /* BarLine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,7 +112,6 @@
 		5BBD8BED24C7EE8B00DD1C08 /* CoronaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaModel.swift; sourceTree = "<group>"; };
 		5BBD8BF124C7F13500DD1C08 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		5BBD8BF424C82E9400DD1C08 /* Cases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cases.swift; sourceTree = "<group>"; };
-		5BCD7BE024CABAA60035E50B /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		5BCD7BE324CAC0190035E50B /* CountryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryData.swift; sourceTree = "<group>"; };
 		5BCD7BE624CAC1C30035E50B /* SmallWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidget.swift; sourceTree = "<group>"; };
 		5BCD7BE924CAC2960035E50B /* MediumWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumWidget.swift; sourceTree = "<group>"; };
@@ -126,7 +121,6 @@
 		5BF143C524CAAB8700BF5729 /* CurrentCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCountry.swift; sourceTree = "<group>"; };
 		5BF143C824CAAE8200BF5729 /* emojiConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emojiConverter.swift; sourceTree = "<group>"; };
 		5BF143CE24CAB18300BF5729 /* CoronaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaType.swift; sourceTree = "<group>"; };
-		5BF143D324CAB2AA00BF5729 /* BarLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarLine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,7 +268,6 @@
 		5BCD7BF324CAC9BD0035E50B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5BF143D124CAB29000BF5729 /* BarGraph */,
 				5BB601F324CA9E9600607A17 /* PieChart */,
 				5B478346251CE3C500A753EB /* SmallWidgetBlock.swift */,
 				5B478348251CE50C00A753EB /* MediumWidgetBlock.swift */,
@@ -292,15 +285,6 @@
 				5BCD7BEC24CAC6960035E50B /* LargeWidget.swift */,
 			);
 			path = Widget;
-			sourceTree = "<group>";
-		};
-		5BF143D124CAB29000BF5729 /* BarGraph */ = {
-			isa = PBXGroup;
-			children = (
-				5BF143D324CAB2AA00BF5729 /* BarLine.swift */,
-				5BCD7BE024CABAA60035E50B /* BarChart.swift */,
-			);
-			path = BarGraph;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,7 +388,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BF143C924CAAE8200BF5729 /* emojiConverter.swift in Sources */,
-				5BF143D424CAB2AA00BF5729 /* BarLine.swift in Sources */,
 				5B47834A251CE58300A753EB /* MediumWidgetBlock.swift in Sources */,
 				5BB601EE24CA9C4C00607A17 /* PieChart.swift in Sources */,
 				5BB601F124CA9C6D00607A17 /* PieChartData.swift in Sources */,
@@ -412,7 +395,6 @@
 				5BBD8BF224C7F13500DD1C08 /* SessionStore.swift in Sources */,
 				5BF143C024CAAA1300BF5729 /* countryCoord.swift in Sources */,
 				5BBD8BEE24C7EE8B00DD1C08 /* CoronaModel.swift in Sources */,
-				5BCD7BE124CABAA60035E50B /* BarChart.swift in Sources */,
 				5BF143C624CAAB8700BF5729 /* CurrentCountry.swift in Sources */,
 				5BBD8BE724C7718500DD1C08 /* Color.swift in Sources */,
 				5B0F50C124C76B7900F273CD /* Corona_WidgetApp.swift in Sources */,
@@ -437,7 +419,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B0F50E024C76BD600F273CD /* Widget.intentdefinition in Sources */,
-				5BF143D524CAB2AA00BF5729 /* BarLine.swift in Sources */,
 				5B478349251CE50C00A753EB /* MediumWidgetBlock.swift in Sources */,
 				5B478347251CE3C500A753EB /* SmallWidgetBlock.swift in Sources */,
 				5BB601E824CA9B6D00607A17 /* PieChartSlide.swift in Sources */,
@@ -451,7 +432,6 @@
 				5BB601EC24CA9B9D00607A17 /* SlideData.swift in Sources */,
 				5BCD7BE824CAC1C30035E50B /* SmallWidget.swift in Sources */,
 				5BB601F224CA9C6D00607A17 /* PieChartData.swift in Sources */,
-				5BCD7BE224CABAA60035E50B /* BarChart.swift in Sources */,
 				5BBD8BF624C82E9400DD1C08 /* Cases.swift in Sources */,
 				5B47834D251CE64E00A753EB /* LargeWidgetBlock.swift in Sources */,
 				5BF143CA24CAAE8200BF5729 /* emojiConverter.swift in Sources */,
