@@ -13,7 +13,7 @@ import MapKit
 struct DataProvider : TimelineProvider {
     
     func placeholder(in context: Context) -> CoronaData {
-        
+        return CoronaData(Corona(Global: Global(NewConfirmed: 0, TotalConfirmed: 0, NewDeaths: 0, TotalDeaths: 0, NewRecovered: 0, TotalRecovered: 0), Countries: [Countries(Country: "India", CountryCode: "IN", Slug: "IN", NewConfirmed: 0, TotalConfirmed: 0, NewDeaths: 0, TotalDeaths: 0, NewRecovered: 0, TotalRecovered: 0, Date: "DATE")]))
     }
     
     func getSnapshot(in context: Context, completion: @escaping (CoronaData) -> Void) {
@@ -36,6 +36,7 @@ struct DataProvider : TimelineProvider {
             completion(timeline)
         }
     }
+}
     
     
     struct WidgetView : View{
