@@ -1,0 +1,19 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    name: Build
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Testing
+        run: |
+          cd Application
+          xcodebuild clean build -project Corona Widget.xcodeproj -scheme Widget -sdk iphonesimulator -destination"platform=iOS Simulator,OS=13.1,name=iPhone 8" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
