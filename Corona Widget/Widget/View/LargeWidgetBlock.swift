@@ -52,7 +52,7 @@ struct countStack : View {
                         .aspectRatio(contentMode: .fit)
                 } //: IF
             } //: GROUP
-            Text((isActive ? "New " : "Total ") + "\(name) : \(Int(total))").bold()
+            Text((isActive ? "New " : "Total ") + "\(name) : \(total.withCommas())").bold()
         } //: HSTACK
     } //: BODY
 }
