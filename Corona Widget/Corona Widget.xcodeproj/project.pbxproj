@@ -58,6 +58,8 @@
 		5BF143CA24CAAE8200BF5729 /* emojiConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143C824CAAE8200BF5729 /* emojiConverter.swift */; };
 		5BF143CF24CAB18300BF5729 /* CoronaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143CE24CAB18300BF5729 /* CoronaType.swift */; };
 		5BF143D024CAB18300BF5729 /* CoronaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF143CE24CAB18300BF5729 /* CoronaType.swift */; };
+		85B1D3222526644800EE645D /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B1D3212526644800EE645D /* Number.swift */; };
+		85B1D3232526644800EE645D /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B1D3212526644800EE645D /* Number.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +120,7 @@
 		5BF143C524CAAB8700BF5729 /* CurrentCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCountry.swift; sourceTree = "<group>"; };
 		5BF143C824CAAE8200BF5729 /* emojiConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emojiConverter.swift; sourceTree = "<group>"; };
 		5BF143CE24CAB18300BF5729 /* CoronaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaType.swift; sourceTree = "<group>"; };
+		85B1D3212526644800EE645D /* Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +212,7 @@
 			children = (
 				5BBD8BE624C7718500DD1C08 /* Color.swift */,
 				5BBD8BF424C82E9400DD1C08 /* Cases.swift */,
+				85B1D3212526644800EE645D /* Number.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -391,6 +395,7 @@
 				5BBD8BF224C7F13500DD1C08 /* SessionStore.swift in Sources */,
 				5BBD8BEE24C7EE8B00DD1C08 /* CoronaModel.swift in Sources */,
 				5BF143C624CAAB8700BF5729 /* CurrentCountry.swift in Sources */,
+				85B1D3222526644800EE645D /* Number.swift in Sources */,
 				5BBD8BE724C7718500DD1C08 /* Color.swift in Sources */,
 				5B0F50C124C76B7900F273CD /* Corona_WidgetApp.swift in Sources */,
 				5B47834E251CE6E100A753EB /* LargeWidgetBlock.swift in Sources */,
@@ -414,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B0F50E024C76BD600F273CD /* Widget.intentdefinition in Sources */,
+				85B1D3232526644800EE645D /* Number.swift in Sources */,
 				5B478349251CE50C00A753EB /* MediumWidgetBlock.swift in Sources */,
 				5B478347251CE3C500A753EB /* SmallWidgetBlock.swift in Sources */,
 				5BB601E824CA9B6D00607A17 /* PieChartSlide.swift in Sources */,
