@@ -9,15 +9,17 @@ import WidgetKit
 import SwiftUI
 import Intents
 
-struct DataProvider : TimelineProvider {
+struct DataProvider : IntentTimelineProvider {
+    typealias Intent = ConfigurationIntent
+    typealias Entry = CoronaData
     
     /// SESSION STORE IS OBSERVABLE OBJECT MADE USING COMBINE
     @ObservedObject var coronaStore = SessionStore()
     
     
     /// function to fetch covid data and display in widget
-    func getTimeline(in context: Context, completion: @escaping (Timeline<CoronaData>) -> ()) {
-        
+    func getTimeline(for configuration: Intent, in context: Context, completion: @escaping (Timeline<CoronaData>) -> ()) {
+        CurrentCountry.county = configuration.country
         var entries: [CoronaData] = [] /// List of entries
         
         /// Widget will refresh every `10 hours`
@@ -32,7 +34,7 @@ struct DataProvider : TimelineProvider {
     }
     
     
-    func getSnapshot(in context: Context, completion: @escaping (CoronaData) -> Void) {
+    func getSnapshot(for configuration: Intent, in context: Context, completion: @escaping (CoronaData) -> Void) {
         coronaStore.fetch{ corona in
             completion(CoronaData(corona))
         }
@@ -69,7 +71,7 @@ struct WidgetView : View{
     
     /// get country details of selected country
     var Country : Countries{
-        let country = CurrentCountry.county.rawValue
+        let country = CurrentCountry.county.initials
         let countries = data.Countries
         let mycountry = countries.filter { $0.CountryCode == country}
         return mycountry.first!
@@ -81,7 +83,7 @@ struct WidgetView : View{
 @main /// swiftui 2.0 stuff
 struct Config : Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "Widget", provider: DataProvider()) { data in
+        IntentConfiguration(kind: "Widget", intent: ConfigurationIntent.self, provider: DataProvider()) { data in
             WidgetView(data: data)
         }
         .supportedFamilies([.systemSmall,.systemMedium,.systemLarge])

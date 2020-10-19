@@ -8,5 +8,5 @@
 import Foundation
 
 struct CurrentCountry {
-    static let county : Country = .india
+    static var county : Country = .unitedStates
 }
