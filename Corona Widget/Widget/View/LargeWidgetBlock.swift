@@ -13,14 +13,14 @@ struct LargeWidgetBlock: View {
     
     // MARK - BODY
     var body: some View {
-        VStack{
+        VStack(alignment: .leading, spacing: 0){
             VStack(alignment:.leading){
                 countStack(total: data.Global.TotalConfirmed,color: .coronapink, name: "confirmed")
                 countStack(total: data.Global.TotalRecovered,  color: .coronagreen, name: "recovered")
                 countStack(total: data.Global.TotalDeaths,color: .coronagrey, name: "deaths")
                 countStack(total: totalActive(),color: .coronayellow, name: "active")
             } //: VSTACK
-            VStack(alignment:.leading){
+            VStack(alignment:.leading, spacing: 0){
                 countStack(total: data.Global.NewConfirmed,color: .coronapink, name: "confirmed",isActive: true,type: .total)
                 countStack(total: data.Global.NewRecovered, color: .coronagreen, name: "recovered",isActive: true,type: .recovered)
                 countStack(total: data.Global.NewDeaths,color: .coronagrey, name: "deaths",isActive: true,type: .deaths)
